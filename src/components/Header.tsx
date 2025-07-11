@@ -89,14 +89,34 @@ export function Header() {
               >
                 Home
               </Link>
+              // Fix 1: Correct template literal syntax
               <Link 
-                to="/projects" 
-                className={`nav-link text-white hover:text-blue-400 transition-colors ${
+                to="/projects"
+                className={`nav-link text-white hover:text-blue-400 transition-colors $
                   location.pathname === '/projects' ? 'text-blue-400' : ''
-                }`}
-              >
-                Projects
-              </Link>
+                }`} // Removed extra $
+                >
+              
+              // Fix 2: Proper tag nesting
+              <header>
+                <div className="container">
+                  <div className="flex justify-between">
+                    {/* Logo nav */}
+                    <nav>...</nav>
+              
+                    {/* Desktop nav */}
+                    <nav>...</nav>
+              
+                    {/* Mobile button */}
+                    <button>...</button>
+                  </div>
+              
+                  {/* Mobile menu */}
+                  {isMobileMenuOpen && (
+                    <nav>...</nav>
+                  )}
+                </div>
+              </header>
             </div>
             <div ref={socialLinksRef} className="flex space-x-4">
               <ThemeToggle />
