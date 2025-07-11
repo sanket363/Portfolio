@@ -4,6 +4,43 @@ import { Link, useLocation } from 'react-router-dom';
 import { Github, Linkedin, Terminal, Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
+// SocialLink component moved outside Header component
+function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+
+  const handleHover = () => {
+    anime({
+      targets: linkRef.current,
+      scale: [1, 1.1],
+      easing: 'easeOutQuad',
+      duration: 300,
+    });
+  };
+
+  const handleLeave = () => {
+    anime({
+      targets: linkRef.current,
+      scale: [1.1, 1],
+      easing: 'easeOutQuad',
+      duration: 300,
+    });
+  };
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300"
+      onMouseEnter={handleHover}
+      onMouseLeave={handleLeave}
+      ref={linkRef}
+    >
+      {icon}
+    </a>
+  );
+}
+
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -165,40 +202,5 @@ export function Header() {
         )}
       </div>
     </header>
-  );
-}
-
-function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
-  const linkRef = useRef<HTMLAnchorElement>(null);
-
-  const handleHover = () => {
-    anime({
-      targets: linkRef.current,
-      scale: [1, 1.1],
-      easing: 'easeOutQuad',
-      duration: 300,
-    });
-  };
-
-  const handleLeave = () => {
-    anime({
-      targets: linkRef.current,
-      scale: [1.1, 1],
-      easing: 'easeOutQuad',
-      duration: 300,
-    });
-  };
-  return (
-    <a 
-      ref={linkRef}
-      href={href} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="text-white hover:text-blue-400 transition-colors p-2 hover:bg-slate-800 rounded-lg"
-      onMouseEnter={handleHover}
-      onMouseLeave={handleLeave}
-    >
-      {React.cloneElement(icon as React.ReactElement, { className: 'w-5 h-5' })}
-    </a>
   );
 }
