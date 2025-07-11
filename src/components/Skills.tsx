@@ -83,7 +83,7 @@ export function Skills() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, { icon, items, color, description }]) => (
+          {Object.entries(skills).map(([category, { icon, items, color, description }], index) => (
             <div 
               key={category} 
               ref={el => skillCategoryRefs.current[index] = el}
@@ -141,7 +141,7 @@ export function Skills() {
                           easing: 'easeOutQuad',
                           duration: 200,
                         });
-                      }}>
+                    >
                     >
                       {skill}
                     </span>
