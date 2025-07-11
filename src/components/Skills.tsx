@@ -54,7 +54,7 @@ const skills = {
     items: ['Mikrotik', 'StrongSwan', 'Networking'],
     color: 'bg-indigo-500',
     description: 'Network configuration and security'
-  }]},"query_language":"English"}}
+  }},"query_language":"English"}}
 };
 
 export function Skills() {
