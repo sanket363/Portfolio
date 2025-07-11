@@ -72,16 +72,15 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4">
-        <nav className="flex justify-between items-center h-20">
-          <div ref={logoRef} className="flex items-center space-x-2">
+        <div className="flex justify-between items-center h-20">
+          <nav ref={logoRef} className="flex items-center space-x-2">
             <Terminal className="w-6 h-6 text-blue-400" />
             <Link to="/" className="text-xl font-bold text-white">DevOps Engineer</Link>
-          </div>
+          </nav>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8">
             <div ref={navLinksRef} className="space-x-6">
-            <div className="space-x-6">
               <Link 
                 to="/" 
                 className={`nav-link text-white hover:text-blue-400 transition-colors ${
@@ -104,7 +103,7 @@ export function Header() {
               <SocialLink href="https://github.com/sanket363" icon={<Github />} />
               <SocialLink href="https://linkedin.com" icon={<Linkedin />} />
             </div>
-          </div>
+          </nav>
 
           {/* Mobile Menu Button */}
           <button 
@@ -113,11 +112,11 @@ export function Header() {
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
-        </nav>
+        </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-800 rounded-lg mt-2 p-4">
+          <nav className="md:hidden bg-slate-800 rounded-lg mt-2 p-4">
             <div className="flex flex-col space-y-4">
               <Link 
                 to="/" 
@@ -142,7 +141,7 @@ export function Header() {
                 <SocialLink href="https://linkedin.com" icon={<Linkedin />} />
               </div>
             </div>
-          </div>
+          </nav>
         )}
       </div>
     </header>
