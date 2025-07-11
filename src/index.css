@@ -86,3 +86,29 @@
     transform: translateY(0);
   }
 }
+
+/* Neumorphism Light */
+.shadow-neumorphic-light {
+  box-shadow: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
+}
+
+.shadow-neumorphic-light-hover {
+  box-shadow: 4px 4px 8px #a3b1c6, -4px -4px 8px #ffffff;
+}
+
+.shadow-neumorphic-light-active {
+  box-shadow: inset 2px 2px 5px #a3b1c6, inset -3px -3px 7px #ffffff;
+}
+
+/* Neumorphism Dark */
+.dark .shadow-neumorphic-dark {
+  box-shadow: 8px 8px 16px #0d0d0d, -8px -8px 16px #222222;
+}
+
+.dark .shadow-neumorphic-dark-hover {
+  box-shadow: 4px 4px 8px #0d0d0d, -4px -4px 8px #222222;
+}
+
+.dark .shadow-neumorphic-dark-active {
+  box-shadow: inset 2px 2px 5px #0d0d0d, inset -3px -3px 7px #222222;
+}
