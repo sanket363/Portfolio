@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { ParticlesBackground } from './ParticlesBackground';
-import { AnimatedGridPattern } from './ui/AnimatedGridPattern';
+import { AnimatedGridPattern } from '../components/ui/AnimatedGridPattern';
 
 interface LayoutProps {
   children: React.ReactNode;
