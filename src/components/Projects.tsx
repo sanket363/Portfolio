@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import anime from 'animejs';
 import { Box, ExternalLink, Star, GitFork, Clock, Code } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -70,6 +71,18 @@ interface ProjectsProps {
 }
 
 export function Projects({ repos }: ProjectsProps) {
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    anime({
+      targets: projectRefs.current,
+      opacity: [0, 1],
+      translateY: [50, 0],
+      easing: 'easeOutQuad',
+      duration: 800,
+      delay: anime.stagger(100, { start: 500 }),
+    });
+  }, [repos]);
   const projects = repos || staticProjects;
   
   return (
@@ -91,11 +104,24 @@ export function Projects({ repos }: ProjectsProps) {
           {projects.map((project, index) => (
             <div 
               key={project.id}
+              ref={el => projectRefs.current[index] = el}
               className="group relative bg-slate-800/20 backdrop-blur-lg rounded-xl overflow-hidden hover:shadow-2xl 
                        transition-all duration-300 hover:-translate-y-2 border border-slate-700/30 hover:border-blue-400/30 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20"
-              style={{ 
-                animationDelay: `${index * 100}ms`,
-                animation: 'slideUp 0.5s ease-out forwards'
+              onMouseEnter={(e) => {
+                anime({
+                  targets: e.currentTarget,
+                  scale: 1.03,
+                  easing: 'easeOutQuad',
+                  duration: 300,
+                });
+              }}
+              onMouseLeave={(e) => {
+                anime({
+                  targets: e.currentTarget,
+                  scale: 1,
+                  easing: 'easeOutQuad',
+                  duration: 300,
+                });
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 
@@ -133,7 +159,24 @@ export function Projects({ repos }: ProjectsProps) {
 
                 <div className="mt-auto flex flex-wrap items-center gap-4 text-sm text-slate-400">
                   {project.technologies && project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-xs border border-slate-600/30 hover:border-blue-400/50 transition-colors">
+                    <span key={techIndex} className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-xs border border-slate-600/30 hover:border-blue-400/50 transition-colors"
+                      onMouseEnter={(e) => {
+                        anime({
+                          targets: e.currentTarget,
+                          scale: 1.1,
+                          easing: 'easeOutQuad',
+                          duration: 200,
+                        });
+                      }}
+                      onMouseLeave={(e) => {
+                        anime({
+                          targets: e.currentTarget,
+                          scale: 1,
+                          easing: 'easeOutQuad',
+                          duration: 200,
+                        });
+                      }}>
+
                       {tech}
                     </span>
                   ))}

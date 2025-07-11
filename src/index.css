@@ -3,12 +3,41 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background-color: #0f172a;
+    --text-color: #e2e8f0;
+    --primary-color: #60a5fa;
+    --secondary-color: #a78bfa;
+    --card-background: #1e293b;
+    --card-border: #334155;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --glass-background: rgba(30, 41, 59, 0.5);
+    --glass-border: rgba(51, 65, 85, 0.3);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme='light'] {
+    --background-color: #f8fafc;
+    --text-color: #1e293b;
+    --primary-color: #2563eb;
+    --secondary-color: #7c3aed;
+    --card-background: #ffffff;
+    --card-border: #e2e8f0;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --glass-background: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(226, 232, 240, 0.5);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply antialiased text-gray-800;
+    @apply antialiased;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
@@ -35,7 +64,7 @@
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: linear-gradient(135deg, var(--card-background) 0%, var(--background-color) 100%);
 }
 
 .card-hover {
@@ -44,7 +73,7 @@
 
 .card-hover:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px -5px var(--card-shadow);
 }
 
 @keyframes slideUp {

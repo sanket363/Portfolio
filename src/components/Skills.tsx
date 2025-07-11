@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import anime from 'animejs';
 import { 
   Cloud, 
   Container, 
@@ -58,6 +59,18 @@ const skills = {
 };
 
 export function Skills() {
+  const skillCategoryRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    anime({
+      targets: skillCategoryRefs.current,
+      opacity: [0, 1],
+      translateY: [50, 0],
+      easing: 'easeOutQuad',
+      duration: 800,
+      delay: anime.stagger(100, { start: 500 }),
+    });
+  }, []);
   return (
     <section className="py-20 bg-gradient-to-b from-white to-slate-50" id="skills">
       <div className="container mx-auto px-4">
@@ -73,8 +86,25 @@ export function Skills() {
           {Object.entries(skills).map(([category, { icon, items, color, description }]) => (
             <div 
               key={category} 
+              ref={el => skillCategoryRefs.current[index] = el}
               className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
                        transform hover:-translate-y-1 overflow-hidden group"
+              onMouseEnter={(e) => {
+                anime({
+                  targets: e.currentTarget,
+                  scale: 1.02,
+                  easing: 'easeOutQuad',
+                  duration: 300,
+                });
+              }}
+              onMouseLeave={(e) => {
+                anime({
+                  targets: e.currentTarget,
+                  scale: 1,
+                  easing: 'easeOutQuad',
+                  duration: 300,
+                });
+              }}
             >
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-4">
@@ -96,6 +126,22 @@ export function Skills() {
                               bg-opacity-10 hover:bg-opacity-20 transition-all duration-300
                               ${color.replace('bg-', 'bg-')} ${color.replace('bg-', 'text-')}
                               cursor-default`}
+                      onMouseEnter={(e) => {
+                        anime({
+                          targets: e.currentTarget,
+                          scale: 1.1,
+                          easing: 'easeOutQuad',
+                          duration: 200,
+                        });
+                      }}
+                      onMouseLeave={(e) => {
+                        anime({
+                          targets: e.currentTarget,
+                          scale: 1,
+                          easing: 'easeOutQuad',
+                          duration: 200,
+                        });
+                      }}>
                     >
                       {skill}
                     </span>
