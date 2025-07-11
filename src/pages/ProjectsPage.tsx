@@ -33,11 +33,11 @@ export function ProjectsPage() {
           className="mb-12"
           onValueChange={(value) => setActiveTab(value)}
         >
-          <TabsList className="grid w-full grid-cols-2 max-w-xs mx-auto bg-slate-800">
-            <TabsTrigger value="featured" className="data-[state=active]:bg-blue-600">
+          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-slate-800">
+            <TabsTrigger value="featured" className="data-[state=active]:bg-blue-600 text-white">
               Featured Projects
             </TabsTrigger>
-            <TabsTrigger value="github" className="data-[state=active]:bg-blue-600">
+            <TabsTrigger value="github" className="data-[state=active]:bg-blue-600 text-white">
               GitHub Repos
             </TabsTrigger>
           </TabsList>

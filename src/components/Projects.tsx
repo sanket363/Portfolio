@@ -91,7 +91,7 @@ export function Projects({ repos }: ProjectsProps) {
             <div 
               key={project.id}
               className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-2xl 
-                       transition-all duration-300 hover:-translate-y-2"
+                       transition-all duration-300 hover:-translate-y-2 border border-slate-700"
               style={{ 
                 animationDelay: `${index * 100}ms`,
                 animation: 'slideUp 0.5s ease-out forwards'
@@ -100,7 +100,7 @@ export function Projects({ repos }: ProjectsProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 
                             group-hover:opacity-100 transition-opacity duration-300" />
               
-              <div className="relative p-6">
+              <div className="relative p-6 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <Box className="w-8 h-8 text-blue-400 mb-3" />
@@ -125,11 +125,11 @@ export function Projects({ repos }: ProjectsProps) {
                   )}
                 </div>
 
-                <p className="text-slate-300 mb-6 line-clamp-3 min-h-[4.5rem]">
+                <p className="text-slate-300 mb-6 line-clamp-3 min-h-[4.5rem] flex-grow">
                   {project.description || 'No description available'}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+                <div className="mt-auto flex flex-wrap items-center gap-4 text-sm text-slate-400">
                   {project.technologies && project.technologies.map((tech, techIndex) => (
                     <span key={techIndex} className="px-3 py-1 bg-slate-700 rounded-full text-xs">
                       {tech}
