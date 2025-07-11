@@ -141,7 +141,7 @@ export function Skills() {
                           easing: 'easeOutQuad',
                           duration: 200,
                         });
-                    >
+                      }}
                     >
                       {skill}
                     </span>
