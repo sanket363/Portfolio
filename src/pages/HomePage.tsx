@@ -1,16 +1,20 @@
 import React from 'react';
-import { Hero } from '../components/Hero';
-import { Skills } from '../components/Skills';
-import { Contact } from '../components/Contact';
-import { Projects } from '../components/Projects';
+import Hero from '../components/Hero';
+import Skills from '../components/Skills';
+import Projects from '../components/Projects';
+import Blog from '../components/Blog';
+import Contact from '../components/Contact';
 
-export function HomePage() {
+function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="home-page">
       <Hero />
       <Skills />
       <Projects />
+      <Blog />
       <Contact />
     </div>
   );
 }
+
+export default HomePage;

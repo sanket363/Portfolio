@@ -1,105 +1,43 @@
-import React, { useEffect, useRef } from 'react';
-import anime from 'animejs';
-import { Mail, Github, Linkedin, Phone } from 'lucide-react';
+import React from 'react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
-export function Contact() {
-  const contactItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-
-  useEffect(() => {
-    anime({
-      targets: contactItemsRef.current,
-      opacity: [0, 1],
-      translateY: [50, 0],
-      easing: 'easeOutQuad',
-      duration: 800,
-      delay: anime.stagger(100, { start: 500 }),
-    });
-  }, []);
+const Contact: React.FC = () => {
   return (
-    <section className="py-20 bg-slate-900 text-white" id="contact">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-display font-bold mb-12 text-center">Get in Touch</h2>
-        <div className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Using a wrapper div for the anime.js target */}
-            <div ref={el => contactItemsRef.current[0] = el}>
-            <ContactItem 
-              icon={<Mail />} 
-              title="Email" 
-              content="sanketbhalke1234@gmail.com"
-              href="mailto:sanketbhalke1234@gmail.com"
-            />
-            </div>
-            <div ref={el => contactItemsRef.current[1] = el}>
-            <ContactItem 
-              icon={<Linkedin />} 
-              title="LinkedIn" 
-              content="Sanket Bhalke"
-              href="https://www.linkedin.com/in/sanket-bhalke-devops/" 
-            />
-            </div>
-            <div ref={el => contactItemsRef.current[2] = el}>
-            <ContactItem 
-              icon={<Github />} 
-              title="GitHub" 
-              content="sanket363"
-              href="https://github.com/sanket363"
-            />
-            </div>
-            <div ref={el => contactItemsRef.current[3] = el}>
-            <ContactItem
-              icon={<Phone />} 
-              title="Phone"
-              content="+91 8177957598"
-              href="tel:+918177957598"
-            />
-            </div>
+    <section id="contact" className="py-20 px-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="container mx-auto max-w-3xl text-center">
+        <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
+        <p className="text-lg mb-8">
+          Have a project in mind or just want to say hello? Feel free to reach out!
+        </p>
+        <div className="flex flex-col items-center space-y-6">
+          <a
+            href="mailto:your.email@example.com"
+            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-full text-xl font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-lg"
+          >
+            <Mail className="w-6 h-6 mr-3" /> Send an Email
+          </a>
+          <div className="flex space-x-6">
+            <a
+              href="https://github.com/your-github"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              <Github className="w-8 h-8" />
+            </a>
+            <a
+              href="https://linkedin.com/in/your-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              <Linkedin className="w-8 h-8" />
+            </a>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
-function ContactItem({ 
-  icon, 
-  title, 
-  content, 
-  href 
-}: { 
-  icon: React.ReactNode; 
-  title: string; 
-  content: string;
-  href: string;
-}) {
-  return (
-    <a 
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex flex-col items-center text-center group hover:transform hover:-translate-y-1 transition-all duration-300"
-      onMouseEnter={(e) => {
-        anime({
-          targets: e.currentTarget,
-          scale: 1.05,
-          easing: 'easeOutQuad',
-          duration: 300,
-        });
-      }}
-      onMouseLeave={(e) => {
-        anime({
-          targets: e.currentTarget,
-          scale: 1,
-          easing: 'easeOutQuad',
-          duration: 300,
-        });
-      }}
-    >
-      <div className="bg-slate-800 p-4 rounded-full mb-4 group-hover:bg-blue-600 transition-colors duration-300">
-        {React.cloneElement(icon as React.ReactElement, { className: 'w-6 h-6' })}
-      </div>
-      <h3 className="text-lg font-semibold mb-2 font-display">{title}</h3>
-      <p className="text-gray-400 group-hover:text-blue-400 transition-colors duration-300">{content}</p>
-    </a>
-  );
-}
+export default Contact;

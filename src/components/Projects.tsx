@@ -1,181 +1,95 @@
-import React, { useEffect, useRef } from 'react';
-import anime from 'animejs';
-import { Box, ExternalLink, Star, GitFork, Clock, Code } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
+import React from 'react';
+import { Github, ExternalLink } from 'lucide-react';
 
-interface Project {
-  id: number;
-  name: string;
+interface ProjectProps {
+  title: string;
   description: string;
-  link?: string;
   technologies: string[];
-  stargazers_count?: number;
-  forks_count?: number;
-  language?: string;
-  updated_at?: string;
+  githubLink?: string;
+  liveLink?: string;
 }
 
-const staticProjects: Project[] = [
-  {
-    id: 1,
-    name: 'GitOps-CiCd-Pipeline',
-    description: 'Deployed Node.js Hello World app using microservices architecture & GitOps with Docker, DockerHub, ArgoCD, Helm, Kustomize, Terraform, Minikube, GitHub Actions.',
-    technologies: ['Node.js', 'Docker', 'DockerHub', 'ArgoCD', 'Helm', 'Kustomize', 'Terraform', 'Minikube', 'GitHub Actions'],
-  },
-  {
-    id: 2,
-    name: 'AWS DevOps CICD',
-    description: 'This project involves creating a CodeCommit deployment and pipeline on AWS. The first step is to create a CodeCommit repository to store your source code.',
-    technologies: ['AWS CodeCommit', 'AWS CodePipeline', 'AWS'],
-  },
-  {
-    id: 3,
-    name: 'Lambda Api Gateway',
-    description: 'This project involves creating a serverless RESTful API using AWS Lambda and API Gateway, which exposes a single endpoint that handles HTTP GET requests.',
-    technologies: ['AWS Lambda', 'API Gateway', 'Serverless'],
-  },
-  {
-    id: 4,
-    name: 'Deployed End-to-End Nodejs Application',
-    description: 'Created a CICD pipeline for the Node.js ToDo app using Jenkins, Docker, and Git integrations, and Docker-compose to automate development, testing, and deployment.',
-    technologies: ['Node.js', 'Jenkins', 'Docker', 'Git', 'Docker-compose', 'CI/CD'],
-  },
-  {
-    id: 5,
-    name: 'Jenkins Declarative CI/CD Pipeline',
-    description: 'This project demonstrates the usage of Jenkins Declarative Pipeline along with Docker, Docker Hub, and Docker Compose for streamlined CI/CD workflows.',
-    technologies: ['Jenkins', 'Docker', 'Docker Hub', 'Docker Compose', 'CI/CD'],
-  },
-  {
-    id: 6,
-    name: 'Docker-Swarm WebApplication Deployment',
-    description: 'The objective of this project is to showcase the implementation of a web application utilising Docker Swarm, a container orchestration tool for the easy management and scaling of containerised applications.',
-    technologies: ['Docker Swarm', 'Docker', 'Container Orchestration'],
-  },
-  {
-    id: 7,
-    name: 'LogFlow - Unified Log Tracking Solution using Grafana, Promtail, Loki',
-    description: 'LogFlow is a project that implements a unified log tracking solution by integrating Grafana, Loki, and Promtail.',
-    technologies: ['Grafana', 'Loki', 'Promtail', 'Logging'],
-  },
-  {
-    id: 8,
-    name: 'Microservices Web-Application Deployment',
-    description: 'Deployed E-commerce microservices on AWS using NodeJS, Java, Python, Golang, PHP, MongoDB, Redis, MySQL, RabbitMQ, Jenkins, Terraform, SonarQube, OWASP, Prometheus, Grafana.',
-    technologies: ['AWS', 'NodeJS', 'Java', 'Python', 'Golang', 'PHP', 'MongoDB', 'Redis', 'MySQL', 'RabbitMQ', 'Jenkins', 'Terraform', 'SonarQube', 'OWASP', 'Prometheus', 'Grafana', 'Microservices'],
-  },
-];
-
-interface ProjectsProps {
-  repos?: Project[];
-}
-
-export function Projects({ repos }: ProjectsProps) {
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    anime({
-      targets: projectRefs.current,
-      opacity: [0, 1],
-      translateY: [50, 0],
-      easing: 'easeOutQuad',
-      duration: 800,
-      delay: anime.stagger(100, { start: 500 }),
-    });
-  }, [repos]);
-  const projects = repos || staticProjects;
-  
+const ProjectCard: React.FC<ProjectProps> = ({ title, description, technologies, githubLink, liveLink }) => {
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 to-transparent opacity-20 pointer-events-none"></div>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
-            {repos ? 'My GitHub Projects' : 'My Projects'}
-          </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            {repos 
-              ? "Browse through my open-source contributions and personal projects"
-              : "Here are some of the key projects I've worked on, showcasing my skills in DevOps, cloud, and automation."}
-          </p>
-        </div>
+    <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 flex flex-col h-full transform transition-transform duration-300 hover:scale-105">
+      <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">{title}</h3>
+      <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {technologies.map((tech, index) => (
+          <span key={index} className="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-sm font-medium px-2.5 py-0.5 rounded-full">
+            {tech}
+          </span>
+        ))}
+      </div>
+      <div className="flex space-x-4 mt-auto">
+        {githubLink && (
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-white rounded-full hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors duration-200"
+          >
+            <Github className="w-5 h-5 mr-2" /> GitHub
+          </a>
+        )}
+        {liveLink && (
+          <a
+            href={liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200"
+          >
+            <ExternalLink className="w-5 h-5 mr-2" /> Live Demo
+          </a>
+        )}
+      </div>
+    </div>
+  );
+};
 
+const Projects: React.FC = () => {
+  const projectsData = [
+    {
+      title: 'Automated CI/CD Pipeline for Microservices',
+      description: 'Designed and implemented a robust CI/CD pipeline using GitHub Actions and ArgoCD for a microservices architecture on Kubernetes, enabling automated testing, building, and deployment.',
+      technologies: ['Kubernetes', 'GitHub Actions', 'ArgoCD', 'Docker', 'Helm'],
+      githubLink: 'https://github.com/sanket363/microservices-cicd',
+    },
+    {
+      title: 'Multi-Cloud Infrastructure with Terraform',
+      description: 'Developed Terraform modules to provision and manage infrastructure across AWS and Azure, ensuring consistency, immutability, and disaster recovery capabilities.',
+      technologies: ['Terraform', 'AWS', 'Azure', 'VPC', 'IAM'],
+      githubLink: 'https://github.com/sanket363/multi-cloud-terraform',
+    },
+    {
+      title: 'Centralized Logging and Monitoring Stack',
+      description: 'Set up an ELK (Elasticsearch, Logstash, Kibana) stack for centralized logging and integrated Prometheus and Grafana for comprehensive application and infrastructure monitoring.',
+      technologies: ['ELK Stack', 'Prometheus', 'Grafana', 'Docker Compose'],
+      githubLink: 'https://github.com/sanket363/monitoring-logging-stack',
+    },
+    {
+      title: 'Serverless Data Processing Pipeline (AWS Lambda)',
+      description: 'Built a cost-effective and scalable serverless data processing pipeline using AWS Lambda, S3, and DynamoDB for real-time data ingestion and transformation.',
+      technologies: ['AWS Lambda', 'S3', 'DynamoDB', 'Python', 'Serverless Framework'],
+      githubLink: 'https://github.com/sanket363/serverless-data-pipeline',
+    },
+  ];
+
+  return (
+    <section id="projects" className="py-20 px-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">My Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={project.id}
-              ref={el => projectRefs.current[index] = el}
-              className="group relative bg-slate-800/20 backdrop-blur-lg rounded-xl overflow-hidden hover:shadow-2xl 
-                       transition-all duration-300 hover:-translate-y-2 border border-slate-700/30 hover:border-blue-400/30 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20"
-              onMouseEnter={(e) => {
-                anime({
-                  targets: e.currentTarget,
-                  scale: 1.03,
-                  easing: 'easeOutQuad',
-                  duration: 300,
-                });
-              }}
-              onMouseLeave={(e) => {
-                anime({
-                  targets: e.currentTarget,
-                  scale: 1,
-                  easing: 'easeOutQuad',
-                  duration: 300,
-                });
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 
-                            group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              <div className="relative p-6 flex flex-col h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <Box className="w-8 h-8 text-blue-400 mb-3" />
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      <a 
-                        href={project.link || `https://github.com/sanket363/${project.name}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-blue-400 transition-colors inline-flex items-center gap-2"
-                      >
-                        {project.name}
-                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
-                    </h3>
-                  </div>
-                  
-                  {project.language && (
-                    <div className="flex items-center text-sm text-blue-400">
-                      <Code className="w-4 h-4 mr-1" />
-                      {project.language}
-                    </div>
-                  )}
-                </div>
+          {projectsData.map((project, index) => (
+            <ProjectCard key={index} {...project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-                <p className="text-slate-300 mb-6 line-clamp-3 min-h-[4.5rem] flex-grow">
-                  {project.description || 'No description available'}
-                </p>
-
-                <div className="mt-auto flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                  {project.technologies && project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-xs border border-slate-600/30 hover:border-blue-400/50 transition-colors"
-                      onMouseEnter={(e) => {
-                        anime({
-                          targets: e.currentTarget,
-                          scale: 1.1,
-                          easing: 'easeOutQuad',
-                          duration: 200,
-                        });
-                      }}
-                      onMouseLeave={(e) => {
-                        anime({
-                          targets: e.currentTarget,
-                          scale: 1,
-                          easing: 'easeOutQuad',
-                          duration: 200,
-                        });
-                      }}>
+export default Projects;
 
                       {tech}
                     </span>
