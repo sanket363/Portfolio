@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Cloud, GitBranch, Database, Mail, Github, Linkedin } from 'lucide-react';
+import { Terminal, Cloud, GitBranch, Database, Mail, Github, Linkedin, Phone } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -11,11 +11,11 @@ export function Hero() {
               Sanket Bhalke
             </h1>
             <h2 className="text-3xl font-display font-semibold mb-6 text-blue-400">
-              DevOps Engineer
+              Cloud DevOps Engineer
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
-              Transforming infrastructure into code, optimizing deployments, and building reliable systems
-              that scale with your business needs.
+              Experienced Cloud DevOps Engineer managing multi-cloud architectures (AWS, Azure, GCP), 
+              implementing CI/CD, and building scalable, secure, and observable systems.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-12 justify-center md:justify-start">
@@ -33,6 +33,11 @@ export function Hero() {
                 href="https://github.com/sanket363"
                 icon={<Github />}
                 text="GitHub"
+              />
+              <SocialButton 
+                href="tel:+918177957598"
+                icon={<Phone />}
+                text="Phone"
               />
             </div>
           </div>

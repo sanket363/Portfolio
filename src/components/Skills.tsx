@@ -15,40 +15,46 @@ import {
 const skills = {
   'Cloud Platforms': {
     icon: <Cloud />,
-    items: ['AWS', 'Azure', 'GCP'],
+    items: ['AWS', 'Azure', 'GCP', 'Cloud Computing'],
     color: 'bg-blue-500',
     description: 'Multi-cloud infrastructure management and optimization'
   },
-  'Container Orchestration': {
+  'Containerization & Orchestration': {
     icon: <Container />,
-    items: ['Kubernetes', 'Docker', 'ArgoCD'],
+    items: ['Docker', 'Kubernetes'],
     color: 'bg-cyan-500',
     description: 'Container deployment and orchestration at scale'
   },
   'CI/CD & Version Control': {
     icon: <GitBranch />,
-    items: ['Jenkins', 'GitHub', 'Bitbucket'],
+    items: ['Jenkins', 'GitHub Actions', 'CI/CD'],
     color: 'bg-orange-500',
     description: 'Automated deployment pipelines and source control'
   },
-  'Infrastructure as Code': {
+  'Infrastructure as Code & Scripting': {
     icon: <Terminal />,
-    items: ['Terraform', 'Python', 'Linux'],
+    items: ['Ansible', 'Terraform', 'Python', 'Linux'],
     color: 'bg-purple-500',
     description: 'Infrastructure automation and scripting'
   },
   'Monitoring & Observability': {
     icon: <LineChart />,
-    items: ['Grafana', 'Prometheus', 'Datadog'],
+    items: ['Grafana', 'Prometheus', 'Datadog', 'Zabbix'],
     color: 'bg-green-500',
     description: 'System monitoring and performance analysis'
   },
-  'Logging & Analysis': {
+  'Logging & Access Management': {
     icon: <Database />,
-    items: ['ELK Stack', 'Zabbix', 'Teleport'],
+    items: ['ELK', 'Teleport'],
     color: 'bg-red-500',
-    description: 'Log management and system analysis'
-  }
+    description: 'Log management and secure access solutions'
+  },
+  'Networking': {
+    icon: <GitBranch />,
+    items: ['Mikrotik', 'StrongSwan', 'Networking'],
+    color: 'bg-indigo-500',
+    description: 'Network configuration and security'
+  }]},"query_language":"English"}}
 };
 
 export function Skills() {

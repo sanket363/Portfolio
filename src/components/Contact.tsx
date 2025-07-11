@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone } from 'lucide-react';
 
 export function Contact() {
   return (
@@ -17,14 +17,20 @@ export function Contact() {
             <ContactItem 
               icon={<Linkedin />} 
               title="LinkedIn" 
-              content="Connect with me"
-              href="https://www.linkedin.com/in/sanket-bhalke-devops/"
+              content="Sanket Bhalke"
+              href="https://www.linkedin.com/in/sanket-bhalke-devops/" 
             />
             <ContactItem 
               icon={<Github />} 
               title="GitHub" 
-              content="View my projects"
+              content="sanket363"
               href="https://github.com/sanket363"
+            />
+            <ContactItem
+              icon={<Phone />} 
+              title="Phone"
+              content="+91 8177957598"
+              href="tel:+918177957598"
             />
           </div>
         </div>
