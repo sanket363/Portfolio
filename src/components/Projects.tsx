@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, ExternalLink } from 'lucide-react';
+import { Box, ExternalLink, Star, GitFork, Clock, Code } from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
 
 interface Project {
   id: number;
@@ -7,9 +8,13 @@ interface Project {
   description: string;
   link?: string;
   technologies: string[];
+  stargazers_count?: number;
+  forks_count?: number;
+  language?: string;
+  updated_at?: string;
 }
 
-const projects: Project[] = [
+const staticProjects: Project[] = [
   {
     id: 1,
     name: 'GitOps-CiCd-Pipeline',
@@ -60,16 +65,24 @@ const projects: Project[] = [
   },
 ];
 
-export function Projects() {
+interface ProjectsProps {
+  repos?: Project[];
+}
+
+export function Projects({ repos }: ProjectsProps) {
+  const projects = repos || staticProjects;
+  
   return (
     <div className="min-h-screen pt-24 pb-20 bg-gradient-to-b from-slate-900 to-slate-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
-            My Projects
+            {repos ? 'My GitHub Projects' : 'My Projects'}
           </h1>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Here are some of the key projects I've worked on, showcasing my skills in DevOps, cloud, and automation.
+            {repos 
+              ? "Browse through my open-source contributions and personal projects"
+              : "Here are some of the key projects I've worked on, showcasing my skills in DevOps, cloud, and automation."}
           </p>
         </div>
 
@@ -92,31 +105,57 @@ export function Projects() {
                   <div>
                     <Box className="w-8 h-8 text-blue-400 mb-3" />
                     <h3 className="text-xl font-semibold text-white mb-2">
-                      {project.link ? (
-                        <a href={project.link} 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           className="hover:text-blue-400 transition-colors inline-flex items-center gap-2">
-                          {project.name}
-                          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                      ) : (
-                        project.name
-                      )}
+                      <a 
+                        href={project.link || `https://github.com/sanket363/${project.name}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-blue-400 transition-colors inline-flex items-center gap-2"
+                      >
+                        {project.name}
+                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </a>
                     </h3>
                   </div>
+                  
+                  {project.language && (
+                    <div className="flex items-center text-sm text-blue-400">
+                      <Code className="w-4 h-4 mr-1" />
+                      {project.language}
+                    </div>
+                  )}
                 </div>
 
                 <p className="text-slate-300 mb-6 line-clamp-3 min-h-[4.5rem]">
-                  {project.description}
+                  {project.description || 'No description available'}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-2 text-sm text-slate-400">
-                  {project.technologies.map((tech, techIndex) => (
+                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+                  {project.technologies && project.technologies.map((tech, techIndex) => (
                     <span key={techIndex} className="px-3 py-1 bg-slate-700 rounded-full text-xs">
                       {tech}
                     </span>
                   ))}
+                  
+                  {project.stargazers_count !== undefined && (
+                    <div className="flex items-center">
+                      <Star className="w-4 h-4 mr-1" />
+                      {project.stargazers_count}
+                    </div>
+                  )}
+                  
+                  {project.forks_count !== undefined && (
+                    <div className="flex items-center">
+                      <GitFork className="w-4 h-4 mr-1" />
+                      {project.forks_count}
+                    </div>
+                  )}
+                  
+                  {project.updated_at && (
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {formatDistanceToNow(new Date(project.updated_at), { addSuffix: true })}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
