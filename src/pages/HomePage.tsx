@@ -6,11 +6,11 @@ import { Projects } from '../components/Projects';
 
 export function HomePage() {
   return (
-    <>
+    <div className="min-h-screen">
       <Hero />
       <Skills />
       <Projects />
       <Contact />
-    </>
+    </div>
   );
 }

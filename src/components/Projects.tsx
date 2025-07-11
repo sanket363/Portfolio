@@ -73,7 +73,8 @@ export function Projects({ repos }: ProjectsProps) {
   const projects = repos || staticProjects;
   
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-gradient-to-b from-slate-900 to-slate-800">
+    <div className="pt-24 pb-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 to-transparent opacity-20 pointer-events-none"></div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
@@ -90,8 +91,8 @@ export function Projects({ repos }: ProjectsProps) {
           {projects.map((project, index) => (
             <div 
               key={project.id}
-              className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-2xl 
-                       transition-all duration-300 hover:-translate-y-2 border border-slate-700"
+              className="group relative bg-slate-800/20 backdrop-blur-lg rounded-xl overflow-hidden hover:shadow-2xl 
+                       transition-all duration-300 hover:-translate-y-2 border border-slate-700/30 hover:border-blue-400/30 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20"
               style={{ 
                 animationDelay: `${index * 100}ms`,
                 animation: 'slideUp 0.5s ease-out forwards'
@@ -99,6 +100,7 @@ export function Projects({ repos }: ProjectsProps) {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 
                             group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative p-6 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
@@ -131,7 +133,7 @@ export function Projects({ repos }: ProjectsProps) {
 
                 <div className="mt-auto flex flex-wrap items-center gap-4 text-sm text-slate-400">
                   {project.technologies && project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="px-3 py-1 bg-slate-700 rounded-full text-xs">
+                    <span key={techIndex} className="px-3 py-1 bg-slate-700/50 backdrop-blur-sm rounded-full text-xs border border-slate-600/30 hover:border-blue-400/50 transition-colors">
                       {tech}
                     </span>
                   ))}

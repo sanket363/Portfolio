@@ -26,7 +26,7 @@ export function ProjectsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 py-20">
+    <div className="min-h-screen py-20">
       <div className="container mx-auto px-4">
         <Tabs 
           defaultValue="featured" 
