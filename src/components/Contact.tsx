@@ -1,40 +1,41 @@
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail, Linkedin, Github } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 px-8 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <div className="container mx-auto max-w-3xl text-center">
-        <h2 className="text-4xl font-bold mb-12">Get in Touch</h2>
-        <p className="text-lg mb-8">
-          Have a project in mind or just want to say hello? Feel free to reach out!
+    <section id="contact" className="py-16 px-4 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
+        <p className="text-lg mb-8 max-w-2xl mx-auto">
+          I'm always open to new opportunities and collaborations. Feel free to reach out!
         </p>
-        <div className="flex flex-col items-center space-y-6">
+        <div className="flex justify-center space-x-6 mb-8">
           <a
             href="mailto:your.email@example.com"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-full text-xl font-semibold hover:bg-blue-700 transition-colors duration-300 shadow-lg"
+            className="flex items-center text-blue-600 dark:text-blue-400 hover:underline text-xl"
           >
-            <Mail className="w-6 h-6 mr-3" /> Send an Email
+            <Mail size={28} className="mr-2" /> Email Me
           </a>
-          <div className="flex space-x-6">
-            <a
-              href="https://github.com/your-github"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-            >
-              <Github className="w-8 h-8" />
-            </a>
-            <a
-              href="https://linkedin.com/in/your-linkedin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-            >
-              <Linkedin className="w-8 h-8" />
-            </a>
-          </div>
+          <a
+            href="https://linkedin.com/in/your-profile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-blue-600 dark:text-blue-400 hover:underline text-xl"
+          >
+            <Linkedin size={28} className="mr-2" /> LinkedIn
+          </a>
+          <a
+            href="https://github.com/your-username"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-blue-600 dark:text-blue-400 hover:underline text-xl"
+          >
+            <Github size={28} className="mr-2" /> GitHub
+          </a>
         </div>
+        <p className="text-md text-gray-600 dark:text-gray-400">
+          Alternatively, you can fill out the form below (coming soon).
+        </p>
       </div>
     </section>
   );

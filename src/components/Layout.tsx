@@ -3,35 +3,40 @@ import Header from './Header';
 import Footer from './Footer';
 import ThemeToggle from './ThemeToggle';
 import ParticlesBackground from './ParticlesBackground';
-import AnimatedGridPattern from './ui/AnimatedGridPattern';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'system');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme') as 'light' | 'dark';
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  });
 
   useEffect(() => {
-    if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    const root = window.document.documentElement;
+    root.classList.remove(theme === 'dark' ? 'light' : 'dark');
+    root.classList.add(theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${theme}`}>
       <ParticlesBackground />
-      <AnimatedGridPattern />
       <Header />
-      <main className="flex-grow relative z-10">
+      <main className="flex-grow container mx-auto p-4 relative z-10">
         {children}
       </main>
+      <ThemeToggle theme={theme} setTheme={setTheme} />
       <Footer />
-      <div className="fixed bottom-4 right-4 z-50">
-        <ThemeToggle theme={theme} setTheme={setTheme} />
-      </div>
     </div>
   );
 };
+
+export default Layout;

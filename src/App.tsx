@@ -1,35 +1,39 @@
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 import anime from 'animejs';
+
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import Blog from './components/Blog';
+import Contact from './components/Contact';
 
 function App() {
-  // Initialize animations on mount
   useEffect(() => {
-    // Basic entrance animation for testing
     anime({
       targets: '.app-container',
       opacity: [0, 1],
-      duration: 800,
-      easing: 'easeInOutQuad'
+      duration: 1000,
+      easing: 'easeInOutQuad',
+      complete: () => {
+        document.querySelector('.app-container')?.classList.add('animate');
+      },
     });
   }, []);
 
   return (
-    <div className="app-container min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Router>
+    <Router>
+      <div className="app-container">
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Layout>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

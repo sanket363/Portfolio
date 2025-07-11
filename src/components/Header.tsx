@@ -1,19 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
-    <header className="relative z-20 w-full py-4 px-8 flex justify-between items-center bg-transparent">
-      <div className="text-2xl font-bold text-gray-900 dark:text-white">
-        <Link to="/">Sanket's Portfolio</Link>
-      </div>
-      <nav>
+    <header className="w-full p-4 bg-white dark:bg-gray-800 shadow-md z-20 relative">
+      <nav className="container mx-auto flex justify-between items-center">
+        <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          MyDevOpsPortfolio
+        </Link>
         <ul className="flex space-x-6">
-          <li>
-            <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-              Home
-            </Link>
-          </li>
+          <NavLink to="/" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</NavLink>
           <NavLink to="/projects" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Projects</NavLink>
           <NavLink to="/blog" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Blog</NavLink>
           <NavLink to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contact</NavLink>

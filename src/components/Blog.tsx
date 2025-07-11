@@ -2,12 +2,12 @@ import React from 'react';
 
 const Blog: React.FC = () => {
   return (
-    <section id="blog" className="py-16 px-4 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <section id="blog" className="py-16 px-4 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center mb-12">Blog</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Example Blog Post Card */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
             <img src="https://via.placeholder.com/400x250" alt="Blog Post Image" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">My First DevOps Post</h3>
@@ -18,7 +18,7 @@ const Blog: React.FC = () => {
           </div>
 
           {/* Add more blog post cards as needed */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
             <img src="https://via.placeholder.com/400x250" alt="Blog Post Image" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">Kubernetes Best Practices</h3>
@@ -28,7 +28,7 @@ const Blog: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
             <img src="https://via.placeholder.com/400x250" alt="Blog Post Image" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold mb-2">CI/CD with GitHub Actions</h3>
