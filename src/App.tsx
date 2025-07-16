@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { MotionProvider } from './contexts/MotionContext';
 import { LoadingProvider } from './contexts/LoadingContext';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 import { AnimationDebugger } from './components/AnimationDebugger';
 import { PresetSelector } from './components/AnimationPresets';
 import { KeyboardNavigationProvider } from './contexts/KeyboardNavigationContext';
