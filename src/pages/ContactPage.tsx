@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
-import { catppuccinTheme } from '../styles/theme';
+import { cyberpunkTheme } from '../styles/theme';
 
 const ContactContainer = styled(motion.div)`
   padding: 100px 2rem;
-  background: ${catppuccinTheme.colors.base};
+  background: ${cyberpunkTheme.colors.background};
+  color: ${cyberpunkTheme.colors.textPrimary};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,9 +19,9 @@ const ContactLink = styled(motion.a)`
   gap: 1rem;
   padding: 1rem 2rem;
   margin: 0.5rem;
-  background: ${catppuccinTheme.colors.surface0};
+  background: ${cyberpunkTheme.colors.surface0};
   border-radius: 1rem;
-  color: ${catppuccinTheme.colors.text};
+  color: ${cyberpunkTheme.colors.text};
   text-decoration: none;
   cursor: pointer;
 `;
@@ -46,7 +47,7 @@ export const ContactPage: React.FC = () => {
       exit={{ opacity: 0 }}
     >
       <motion.h1 
-        style={{ color: catppuccinTheme.colors.mauve, marginBottom: '2rem' }}
+        style={{ color: cyberpunkTheme.colors.mauve, marginBottom: '2rem' }}
         initial={{ y: -20 }}
         animate={{ y: 0 }}
       >
