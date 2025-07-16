@@ -22,7 +22,7 @@ const ProjectCard = styled(motion.a)`
   color: ${catppuccinTheme.colors.text};
 `;
 
-const ProjectsPage: React.FC = () => {
+export const ProjectsPage: React.FC = () => {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
 

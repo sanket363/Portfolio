@@ -20,7 +20,7 @@ const skills = {
   "Version Control": ["Git", "GitHub", "GitLab"]
 };
 
-export const SkillsPage = () => {
+export const SkillsPage: React.FC = () => {
   return (
     <SkillsContainer
       initial={{ opacity: 0 }}

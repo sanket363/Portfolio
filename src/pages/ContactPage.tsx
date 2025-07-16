@@ -25,7 +25,7 @@ const ContactLink = styled(motion.a)`
   cursor: pointer;
 `;
 
-export const ContactPage = () => {
+export const ContactPage: React.FC = () => {
   const contacts = [
     {
       platform: "LinkedIn",
