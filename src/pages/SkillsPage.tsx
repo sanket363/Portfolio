@@ -58,4 +58,3 @@ export const SkillsPage: React.FC = () => {
     </SkillsContainer>
   );
 };
-};
