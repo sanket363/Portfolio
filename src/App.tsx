@@ -9,6 +9,9 @@ import { catppuccinTheme } from './styles/theme';
 import { Navigation } from './components/Navigation';
 import { WelcomePage } from './components/WelcomePage';
 import { PageTransition } from './components/PageTransition';
+import ProjectsPage from './pages/ProjectsPage';
+import SkillsPage from './pages/SkillsPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   useEffect(() => {
@@ -38,7 +41,30 @@ function App() {
                   </PageTransition>
                 }
               />
-              {/* Add more routes with PageTransition wrapper */}
+              <Route
+                path="/projects"
+                element={
+                  <PageTransition>
+                    <ProjectsPage />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/skills"
+                element={
+                  <PageTransition>
+                    <SkillsPage />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <PageTransition>
+                    <ContactPage />
+                  </PageTransition>
+                }
+              />
             </Routes>
           </AnimatePresence>
         </div>
