@@ -1,0 +1,47 @@
+SANKET BHALKE
+LinkedIn | +91 8177957598 | sanketbhalke1234@gmail.com | GitHub
+Skills ____________________________________________________________________________________________
+• Linux | Docker | Jenkins | GitHub Actions | Grafana | Prometheus | Python | Mikrotik | StrongSwan | ELK | Ansible | Zabbix
+• AWS | Cloud Computing | CI/CD | Networking
+Experience _______________________________________________________________________________________
+DevOps Engineer Cloudaeon Pune, India 03/2022 - Current
+• Migrated IBM cloud Infra to AWS Cloud Infra
+• Upgraded AWS EKS Cluster
+• Upgraded Oracle RDS on AWS
+• Managed containerized applications using Kubernetes and Docker, ensuring seamless deployment and scaling of the application,
+resulting in a 15% improvement in application availability.
+• Monitored the project's infrastructure using Zabbix Monitoring, Grafana, Prometheus identifying and addressing issues proactively,
+resulting in a 40% reduction in system downtime.
+• Utilized AWS services such as EC2, RDS, S3, Eks, Autoscaling, CloudWatch, Route 53, etc. to manage and maintain the website's
+infrastructure
+• Troubleshooting for AWS airflow using Helm cluster
+• Implemented Azure Infrastructure using Terraform.
+• Setted up Tunnel Configuration for multiple clients using Mikrotik and Sophos
+• Implemented ELK (Elasticsearch, Logstash, Kibana) stack for stateless AWS EKS infrastructure to streamline log management and
+monitoring.
+DevOps Engineer Intern Cloudaeon Pune, India 09/2021 - 02/2022
+• Assist with the deployment of applications and updates to testing, staging, and production environments.
+• Help automate manual tasks and streamline processes to improve the team's productivity and efficiency.
+Education ________________________________________________________________________________________
+Bachelor in Informartion Technology Anantrao Pawar College Pune, India 09/2021 - 07/2024
+• Major in Information and Computer Engineering
+Diploma in Computer Engineering Bharti Vidyapeeth Pune, India 07/2018 - 08/2021
+• Major in Computer Engineering
+Projects __________________________________________________________________________________________
+• GitHub Actions for WebHosting: Using Github Actions to Deploy Website on AWS S3 is a project that automates the process of
+deploying a static website to an Amazon S3 bucket using Github Actions.
+• AWS DevOps CICD: This project involves creating a CodeCommit deploy and pipeline on AWS. The first step is to create a CodeCommit
+repository to store your source code.
+• Lambda Api Gateway: This project involves creating a serverless RESTful API using AWS Lambda and API Gateway, which exposes a
+single endpoint that handles HTTP GET requests.
+• Deployed End-to-End Nodejs Application: Created a CICD pipeline for the Node.js ToDo app using Jenkins, Docker, and Git integrations,
+and Docker-compose to automate development, testing, and deployment.
+• Jenkins Declarative CI/CD Pipeline: This project demonstrates the usage of Jenkins Declarative Pipeline along with Docker, Docker Hub,
+and Docker Compose for streamlined CI/CD workflows.
+• Docker-Swarm WebApplication Deployment: The objective of this project is to showcase the implementation of a web application
+utilizing Docker Swarm, a container orchestration tool for the easy management and scaling of containerized applications
+• LogFlow - Unified Log Tracking Solution using Grafana, Promtail, Loki: LogFlow is a project that implements a unified log tracking
+solution by integrating Grafana, Loki, and Promtail.
+Awards ___________________________________________________________________________________________
+• Best Rookie 2022 - Associated with Cloudaeon 01/2022
+• Quarterly Team Award - Associated with Cloudaeon 01/2024

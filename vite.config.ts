@@ -1,43 +1,37 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const isProduction = mode === 'production';
-
-  return {
-    plugins: [
-      react(),
-    ],
-    optimizeDeps: {
-      include: [
-        'lottie-web',
-        'gsap',
-        'animejs',
-        '@studio-freight/lenis',
-        'three'
-      ],
-      exclude: ['lucide-react'],
+export default defineConfig({
+  plugins: [
+    react(),
+    runtimeErrorOverlay(),
+    ...(process.env.NODE_ENV !== "production" &&
+    process.env.REPL_ID !== undefined
+      ? [
+          await import("@replit/vite-plugin-cartographer").then((m) =>
+            m.cartographer(),
+          ),
+        ]
+      : []),
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
-    define: {
-      __ANIMATION_PERFORMANCE_MODE__: JSON.stringify(isProduction),
-      __ANIMATION_DEBUG_MODE__: JSON.stringify(!isProduction),
+  },
+  root: path.resolve(import.meta.dirname, "client"),
+  build: {
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    emptyOutDir: true,
+  },
+  server: {
+    fs: {
+      strict: true,
+      deny: ["**/.*"],
     },
-    build: {
-      sourcemap: !isProduction,
-      chunkSizeWarningLimit: 2000,
-      rollupOptions: {
-        external: [
-          /^gsap\/.+/,
-          /^three\/.+/
-        ],
-      },
-    },
-    // allow importing 3D model and binary assets for Three.js/WebGL
-    assetsInclude: [
-      '**/*.glb',
-      '**/*.gltf',
-      '**/*.bin'
-    ],
-  };
+  },
 });
