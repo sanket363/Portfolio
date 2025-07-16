@@ -1,10 +1,50 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import viteLottie from 'vite-plugin-lottie';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
+export default defineConfig(({ mode }) => {
+  const isProduction = mode === 'production';
+
+  return {
+    plugins: [
+      react(),
+      viteLottie({
+        include: ['**/*.json'],
+        exclude: [],
+        // enable minification and optimization for Lottie JSON assets
+        minify: true,
+      }),
+    ],
+    optimizeDeps: {
+      include: [
+        'lottie-web',
+        'gsap',
+        'animejs',
+        '@studio-freight/lenis',
+        'three'
+      ],
+      exclude: ['lucide-react'],
+    },
+    define: {
+      __ANIMATION_PERFORMANCE_MODE__: JSON.stringify(isProduction),
+      __ANIMATION_DEBUG_MODE__: JSON.stringify(!isProduction),
+    },
+    build: {
+      sourcemap: !isProduction,
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        external: [
+          /^gsap\/.+/,
+          /^three\/.+/
+        ],
+      },
+    },
+    // allow importing 3D model and binary assets for Three.js/WebGL
+    assetsInclude: [
+      '**/*.glb',
+      '**/*.gltf',
+      '**/*.bin'
+    ],
+  };
 });

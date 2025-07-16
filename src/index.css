@@ -2,6 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== CSS CUSTOM PROPERTIES FOR ANIMATION SYSTEM ===== */
+:root {
+  /* Animation Timing Tokens */
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast: 150ms;
+  --motion-duration-normal: 300ms;
+  --motion-duration-slow: 500ms;
+  --motion-duration-slower: 800ms;
+  --motion-duration-slowest: 1200ms;
+
+  /* Easing Curves */
+  --motion-ease-linear: linear;
+  --motion-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --motion-ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --motion-ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Spring Configurations */
+  --motion-spring-gentle: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --motion-spring-wobbly: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  --motion-spring-stiff: cubic-bezier(0.35, 0.91, 0.33, 0.97);
+
+  /* Scale Values */
+  --motion-scale-enter: 0.95;
+  --motion-scale-exit: 1.05;
+  --motion-scale-hover: 1.02;
+  --motion-scale-press: 0.98;
+  --motion-scale-focus: 1.01;
+
+  /* Transform Values */
+  --motion-translate-x-enter: -20px;
+  --motion-translate-y-enter: 20px;
+  --motion-rotate-enter: -5deg;
+  --motion-skew-enter: 2deg;
+
+  /* Blur Values */
+  --motion-blur-sm: 4px;
+  --motion-blur-md: 8px;
+  --motion-blur-lg: 16px;
+  --motion-blur-xl: 24px;
+
+  /* Opacity Values */
+  --motion-opacity-disabled: 0.5;
+  --motion-opacity-loading: 0.7;
+  --motion-opacity-hover: 0.8;
+
+  /* Z-Index Scale */
+  --motion-z-dropdown: 1000;
+  --motion-z-sticky: 1020;
+  --motion-z-fixed: 1030;
+  --motion-z-modal-backdrop: 1040;
+  --motion-z-modal: 1050;
+  --motion-z-popover: 1060;
+  --motion-z-tooltip: 1070;
+  --motion-z-toast: 1080;
+
+  /* Glassmorphism Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 10px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* Neumorphism Tokens */
+  --neu-bg-light: #e0e5ec;
+  --neu-shadow-light: 9px 9px 16px #a3b1c6, -9px -9px 16px #ffffff;
+  --neu-shadow-inset-light: inset 9px 9px 16px #a3b1c6, inset -9px -9px 16px #ffffff;
+  --neu-bg-dark: #2d3748;
+  --neu-shadow-dark: 9px 9px 16px #1a202c, -9px -9px 16px #404c64;
+  --neu-shadow-inset-dark: inset 9px 9px 16px #1a202c, inset -9px -9px 16px #404c64;
+
+  /* Focus Ring Tokens */
+  --focus-ring-color: rgba(59, 130, 246, 0.5);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-shadow: 0 0 0 var(--focus-ring-offset) var(--focus-ring-color);
+
+  /* Performance Optimization Tokens */
+  --motion-reduce-factor: 1;
+  --motion-gpu-acceleration: translateZ(0);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-normal: 0ms;
+    --motion-duration-slow: 0ms;
+    --motion-duration-slower: 0ms;
+    --motion-duration-slowest: 0ms;
+    --motion-reduce-factor: 0;
+    --motion-scale-hover: 1;
+    --motion-scale-press: 1;
+    --motion-scale-focus: 1;
+  }
+}
+
+/* ===== GLOBAL PERFORMANCE OPTIMIZATIONS ===== */
 html,
 body,
 #root {
@@ -9,13 +115,27 @@ body,
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  /* Performance optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* GPU acceleration for smooth animations */
+  transform: var(--motion-gpu-acceleration);
+  /* Layout containment for better performance */
+  contain: layout style paint;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f8f8f8;
   color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: 
+    background-color var(--motion-duration-normal) var(--motion-ease-out),
+    color var(--motion-duration-normal) var(--motion-ease-out);
+  /* Scroll behavior optimizations */
+  scroll-behavior: smooth;
+  /* Touch action optimization for mobile */
+  touch-action: manipulation;
 }
 
 body.dark {
@@ -23,107 +143,466 @@ body.dark {
   color: #f8f8f8;
 }
 
-/* Custom scrollbar for Webkit browsers */
+/* Theme transition container */
+body.theme-transitioning * {
+  transition: 
+    background-color var(--motion-duration-slow) var(--motion-ease-out),
+    color var(--motion-duration-slow) var(--motion-ease-out),
+    border-color var(--motion-duration-slow) var(--motion-ease-out),
+    box-shadow var(--motion-duration-slow) var(--motion-ease-out) !important;
+}
+
+/* ===== ENHANCED SCROLLBAR STYLING ===== */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
+  background: rgba(241, 241, 241, 0.5);
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #888, #666);
+  border-radius: 4px;
+  transition: background var(--motion-duration-fast) var(--motion-ease-out);
 }
 
-/* Smooth scrolling for anchor links */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #555, #333);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Dark mode scrollbar */
+body.dark ::-webkit-scrollbar-track {
+  background: rgba(45, 45, 45, 0.5);
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #666, #888);
+}
+
+body.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #888, #aaa);
+}
+
+/* Smooth scrolling optimizations */
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed headers */
+}
+
+/* Scroll snap for better mobile experience */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
-/* Basic link styling */
+.scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+/* ===== ENHANCED LINK AND FOCUS STYLING ===== */
 a {
   color: inherit;
   text-decoration: none;
+  position: relative;
+  transition: 
+    color var(--motion-duration-fast) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
-/* Utility classes for animations */
+/* Animated underline effect */
+a.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width var(--motion-duration-normal) var(--motion-ease-out);
+}
+
+a.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Global focus management */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+  transition: outline-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  box-shadow: var(--focus-ring-shadow);
+  transform: scale(var(--motion-scale-focus));
+  transition: 
+    box-shadow var(--motion-duration-fast) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+/* ===== ENHANCED ANIMATION UTILITY CLASSES ===== */
+/* Base animation states */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-translate-y-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .fade-in.animate {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(0) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-out);
 }
 
 .slide-in-left {
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translateX(var(--motion-translate-x-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .slide-in-left.animate {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateX(0) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-out);
 }
 
 .slide-in-right {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(calc(-1 * var(--motion-translate-x-enter))) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .slide-in-right.animate {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateX(0) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-out);
 }
 
 .scale-in {
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(var(--motion-scale-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .scale-in.animate {
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: scale(1) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-bounce);
 }
 
-/* Specific styles for animejs.com inspiration */
+/* Additional animation utilities */
+.rotate-in {
+  opacity: 0;
+  transform: rotate(var(--motion-rotate-enter)) scale(var(--motion-scale-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
+}
+
+.rotate-in.animate {
+  opacity: 1;
+  transform: rotate(0deg) scale(1) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-back);
+}
+
+.flip-in {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(90deg) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
+}
+
+.flip-in.animate {
+  opacity: 1;
+  transform: perspective(1000px) rotateY(0deg) var(--motion-gpu-acceleration);
+  transition: 
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-back);
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: calc(var(--motion-duration-fast) * 1); }
+.stagger-2 { animation-delay: calc(var(--motion-duration-fast) * 2); }
+.stagger-3 { animation-delay: calc(var(--motion-duration-fast) * 3); }
+.stagger-4 { animation-delay: calc(var(--motion-duration-fast) * 4); }
+.stagger-5 { animation-delay: calc(var(--motion-duration-fast) * 5); }
+
+/* ===== GLASSMORPHISM UTILITY CLASSES ===== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-intense {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* ===== NEUMORPHISM UTILITY CLASSES ===== */
+.neu {
+  background: var(--neu-bg-light);
+  box-shadow: var(--neu-shadow-light);
+  border-radius: 12px;
+  transition: box-shadow var(--motion-duration-normal) var(--motion-ease-out);
+}
+
+.neu:hover {
+  box-shadow: var(--neu-shadow-inset-light);
+}
+
+.neu-inset {
+  background: var(--neu-bg-light);
+  box-shadow: var(--neu-shadow-inset-light);
+  border-radius: 12px;
+}
+
+body.dark .neu {
+  background: var(--neu-bg-dark);
+  box-shadow: var(--neu-shadow-dark);
+}
+
+body.dark .neu:hover {
+  box-shadow: var(--neu-shadow-inset-dark);
+}
+
+body.dark .neu-inset {
+  background: var(--neu-bg-dark);
+  box-shadow: var(--neu-shadow-inset-dark);
+}
+
+/* ===== LOADING AND SKELETON ANIMATIONS ===== */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+body.dark .skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200px 100%;
+}
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+.loading-bounce {
+  animation: bounce 1s infinite;
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.float-effect {
+  animation: float 3s ease-in-out infinite;
+}
+
+.neon-text {
+  animation: neon-flicker 2s ease-in-out infinite alternate;
+}
+
+/* ===== GESTURE SUPPORT STYLES ===== */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.swipe-container {
+  overflow: hidden;
+  touch-action: pan-x;
+}
+
+.draggable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+/* Hover effects for non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .hover-scale:hover {
+    transform: scale(var(--motion-scale-hover)) var(--motion-gpu-acceleration);
+    transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) var(--motion-gpu-acceleration);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: 
+      transform var(--motion-duration-fast) var(--motion-ease-out),
+      box-shadow var(--motion-duration-fast) var(--motion-ease-out);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transition: box-shadow var(--motion-duration-fast) var(--motion-ease-out);
+  }
+}
+
+/* Press effects */
+.pressable:active {
+  transform: scale(var(--motion-scale-press)) var(--motion-gpu-acceleration);
+  transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+/* ===== SPECIFIC STYLES FOR ANIMEJS.COM INSPIRATION ===== */
 .app-container {
   opacity: 0;
+  will-change: opacity;
 }
 
 .app-container.animate {
   opacity: 1;
-  transition: opacity 1s ease-in;
+  transition: opacity var(--motion-duration-slowest) var(--motion-ease-in);
 }
 
 .hero-title .word {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-translate-y-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .hero-subtitle {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-translate-y-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .hero-cta-buttons {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--motion-translate-y-enter)) var(--motion-gpu-acceleration);
+  will-change: opacity, transform;
 }
 
 .blinking-cursor {
@@ -136,5 +615,205 @@ a:hover {
   }
   50% {
     opacity: 0;
+  }
+}
+
+/* ===== RESPONSIVE ANIMATION STYLES ===== */
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  :root {
+    --motion-duration-fast: 100ms;
+    --motion-duration-normal: 200ms;
+    --motion-duration-slow: 300ms;
+    --motion-scale-hover: 1.01;
+    --motion-translate-y-enter: 10px;
+    --motion-translate-x-enter: -10px;
+  }
+
+  .mobile-reduced-motion {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --motion-duration-fast: 120ms;
+    --motion-duration-normal: 250ms;
+    --motion-duration-slow: 400ms;
+  }
+}
+
+/* High refresh rate displays */
+@media (min-resolution: 120dpi) {
+  :root {
+    --motion-duration-fast: 120ms;
+    --motion-duration-normal: 240ms;
+  }
+}
+
+/* ===== ANIMATION DEBUGGING STYLES (DEVELOPMENT) ===== */
+.debug-animations * {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+  animation-play-state: paused !important;
+}
+
+.debug-animations *:hover {
+  outline: 2px solid rgba(255, 0, 0, 0.8) !important;
+}
+
+.debug-performance {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== PRINT STYLES (DISABLE ANIMATIONS) ===== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .glass,
+  .glass-intense,
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .neu,
+  .neu-inset {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --focus-ring-color: rgba(0, 0, 0, 0.8);
+    --focus-ring-width: 3px;
+  }
+
+  .glass,
+  .glass-intense,
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #000;
+  }
+
+  body.dark .glass,
+  body.dark .glass-intense,
+  body.dark .glass-subtle {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced motion comprehensive support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in,
+  .slide-in-left,
+  .slide-in-right,
+  .scale-in,
+  .rotate-in,
+  .flip-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .skeleton {
+    animation: none !important;
+    background: #f0f0f0 !important;
+  }
+
+  body.dark .skeleton {
+    background: #2a2a2a !important;
+  }
+}
+
+/* ===== UTILITY CLASSES FOR PERFORMANCE ===== */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+.gpu-accelerated {
+  transform: var(--motion-gpu-acceleration);
+}
+
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* ===== MODERN CSS FEATURES ===== */
+/* Container queries support (when available) */
+@supports (container-type: inline-size) {
+  .container-responsive {
+    container-type: inline-size;
+  }
+
+  @container (max-width: 400px) {
+    .container-responsive .scale-in {
+      transform: scale(0.9) var(--motion-gpu-acceleration);
+    }
+  }
+}
+
+/* View transitions support (when available) */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--motion-duration-slow);
+  }
+}
+
+/* Scroll timeline support (when available) */
+@supports (animation-timeline: scroll()) {
+  .scroll-driven {
+    animation-timeline: scroll();
+    animation-range: entry 0% exit 100%;
   }
 }
