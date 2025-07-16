@@ -24,7 +24,7 @@ declare module '@emotion/react' {
   }
 }
 
-export const cyberpunkTheme = {
+const theme = {
   colors: {
     primary: '#00fff5',
     secondary: '#ff00ff',
@@ -44,9 +44,9 @@ export const cyberpunkTheme = {
     neon: '0 0 10px rgba(0, 255, 245, 0.5), 0 0 20px rgba(0, 255, 245, 0.3)',
     hover: '0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3)'
   }
-} as const;
-  shadows: {
-    neon: '0 0 10px rgba(0, 255, 245, 0.5), 0 0 20px rgba(0, 255, 245, 0.3)',
+};
+
+export const cyberpunkTheme = theme;
     hover: '0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3)'
   }
 };
