@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from '@emotion/styled';
+import { ThemeProvider } from '@emotion/react'; // Changed from @emotion/styled
 import anime from 'animejs';
 
 import { WelcomePage } from './components/WelcomePage';
