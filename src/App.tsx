@@ -11,7 +11,8 @@ import { SkillsPage } from './pages/SkillsPage';
 import { ContactPage } from './pages/ContactPage';
 import { Navigation } from './components/Navigation';
 import { PageTransition } from './components/PageTransition';
-import { catppuccinTheme } from './styles/theme';
+import { cyberpunkTheme } from './styles/theme';
+import { Background } from './components/Background';
 
 function App() {
   useEffect(() => {
@@ -47,7 +48,8 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={catppuccinTheme}>
+    <ThemeProvider theme={cyberpunkTheme}>
+      <Background />
       <AnimateSharedLayout>
         <BrowserRouter>
           <div className="app-container">

@@ -3,52 +3,52 @@ import '@emotion/react';
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
-      rosewater: string;
-      flamingo: string;
-      pink: string;
-      mauve: string;
-      red: string;
-      maroon: string;
-      peach: string;
-      yellow: string;
-      green: string;
-      teal: string;
-      sky: string;
-      sapphire: string;
-      blue: string;
-      lavender: string;
-      text: string;
-      subtext1: string;
-      subtext0: string;
-      overlay2: string;
-      overlay1: string;
-      overlay0: string;
-      surface2: string;
-      surface1: string;
-      surface0: string;
-      base: string;
-      mantle: string;
-      crust: string;
+      primary: string;
+      secondary: string;
+      accent: string;
+      background: string;
+      surface: string;
+      text: {
+        primary: string;
+        secondary: string;
+        accent: string;
+      };
+      gradient: {
+        primary: string;
+        secondary: string;
+        glow: string;
+      };
+    };
+    shadows: {
+      neon: string;
+      hover: string;
     };
   }
 }
 
-export const catppuccinTheme = {
+export const cyberpunkTheme = {
   colors: {
-    rosewater: '#F5E0DC',
-    flamingo: '#F2CDCD',
-    pink: '#F5C2E7',
-    mauve: '#CBA6F7',
-    red: '#F38BA8',
-    maroon: '#EBA0AC',
-    peach: '#FAB387',
-    yellow: '#F9E2AF',
-    green: '#A6E3A1',
-    teal: '#94E2D5',
-    sky: '#89DCEB',
-    sapphire: '#74C7EC',
-    blue: '#89B4FA',
-    lavender: '#B4BEFE',
+    primary: '#00fff5',
+    secondary: '#ff00ff',
+    accent: '#ffff00',
+    background: '#0a0a0f',
+    surface: '#1a1a2e',
+    text: {
+      primary: '#ffffff',
+      secondary: '#b3b3b3',
+      accent: '#00fff5'
+    },
+    gradient: {
+      primary: 'linear-gradient(135deg, #00fff5 0%, #ff00ff 100%)',
+      secondary: 'linear-gradient(135deg, #ff00ff 0%, #ffff00 100%)',
+      glow: 'rgba(0, 255, 245, 0.5)'
+    }
+  },
+  shadows: {
+    neon: '0 0 10px rgba(0, 255, 245, 0.5), 0 0 20px rgba(0, 255, 245, 0.3)',
+    hover: '0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3)'
+  }
+};
     text: '#CDD6F4',
     subtext1: '#BAC2DE',
     subtext0: '#A6ADC8',
