@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { catppuccinTheme } from '../styles/theme';
+import { cyberpunkTheme } from '../styles/theme';
 
 const Nav = styled(motion.nav)`
   position: fixed;
   top: 0;
   width: 100%;
   padding: 1.5rem;
-  background: ${catppuccinTheme.colors.mantle}aa;
+  background: ${cyberpunkTheme.colors.surface};
+  color: ${cyberpunkTheme.colors.textPrimary};
   backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
@@ -21,13 +22,13 @@ const NavItem = styled(motion.div)`
 `;
 
 const NavLink = styled(Link)`
-  color: ${catppuccinTheme.colors.text};
+  color: ${cyberpunkTheme.colors.text};
   text-decoration: none;
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
   
   &:hover {
-    color: ${catppuccinTheme.colors.mauve};
+    color: ${cyberpunkTheme.colors.mauve};
   }
 `;
 
@@ -37,7 +38,7 @@ const NavIndicator = styled(motion.div)`
   left: 0;
   right: 0;
   height: 3px;
-  background: ${catppuccinTheme.colors.mauve};
+  background: ${cyberpunkTheme.colors.mauve};
   border-radius: 1px;
 `;
 
