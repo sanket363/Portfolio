@@ -5,12 +5,12 @@ import { getRepositories } from '../services/github';
 import { cyberpunkTheme } from '../styles/theme';
 
 const ProjectsContainer = styled(motion.div)`
+  background: ${cyberpunkTheme.colors.background};
+  color: ${cyberpunkTheme.colors.textPrimary};
   padding: 100px 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  background: ${cyberpunkTheme.colors.background};
-  color: ${cyberpunkTheme.colors.textPrimary};
   min-height: 100vh;
 `;
 

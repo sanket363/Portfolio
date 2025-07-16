@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
-import { catppuccinTheme } from '../styles/theme';
+import { cyberpunkTheme } from '../styles/theme';
 
 const SkillsContainer = styled(motion.div)`
-  padding: 100px 2rem;
-  background: ${catppuccinTheme.colors.base};
+  background: ${cyberpunkTheme.colors.background};
+  color: ${cyberpunkTheme.colors.textPrimary};
   min-height: 100vh;
 `;
 
@@ -34,7 +34,7 @@ export const SkillsPage: React.FC = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: index * 0.2 }}
         >
-          <h2 style={{ color: catppuccinTheme.colors.mauve, marginBottom: '1rem' }}>
+          <h2 style={{ color: cyberpunkTheme.colors.accent, marginBottom: '1rem' }}>
             {category}
           </h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
@@ -43,10 +43,10 @@ export const SkillsPage: React.FC = () => {
                 key={skill}
                 whileHover={{ scale: 1.1 }}
                 style={{
-                  background: catppuccinTheme.colors.surface0,
+                  background: cyberpunkTheme.colors.card,
                   padding: '0.5rem 1rem',
                   borderRadius: '1rem',
-                  color: catppuccinTheme.colors.text
+                  color: cyberpunkTheme.colors.textPrimary
                 }}
               >
                 {skill}
@@ -57,4 +57,5 @@ export const SkillsPage: React.FC = () => {
       ))}
     </SkillsContainer>
   );
+};
 };
