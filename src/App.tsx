@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { ThemeProvider } from '@emotion/react';
 import anime from 'animejs';
 
-import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import ProjectsPage from './pages/ProjectsPage';
-import Blog from './components/Blog';
-import Contact from './components/Contact';
+import DevOpsPortfolio from './pages/DevOpsPortfolioPage';
+import { catppuccinTheme } from './styles/theme';
+import { Navigation } from './components/Navigation';
+import { WelcomePage } from './components/WelcomePage';
+import { PageTransition } from './components/PageTransition';
 
 function App() {
   useEffect(() => {
@@ -22,18 +24,26 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="app-container">
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Layout>
-      </div>
-    </Router>
+    <ThemeProvider theme={catppuccinTheme}>
+      <BrowserRouter>
+        <div className="app-container">
+          <Navigation />
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PageTransition>
+                    <WelcomePage />
+                  </PageTransition>
+                }
+              />
+              {/* Add more routes with PageTransition wrapper */}
+            </Routes>
+          </AnimatePresence>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
