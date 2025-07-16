@@ -2,24 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import { getRepositories } from '../services/github';
-import { catppuccinTheme } from '../styles/theme';
+import { cyberpunkTheme } from '../styles/theme';
 
 const ProjectsContainer = styled(motion.div)`
   padding: 100px 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  background: ${catppuccinTheme.colors.base};
+  background: ${cyberpunkTheme.colors.background};
+  color: ${cyberpunkTheme.colors.textPrimary};
   min-height: 100vh;
 `;
 
 const ProjectCard = styled(motion.a)`
-  background: ${catppuccinTheme.colors.surface0};
+  background: ${cyberpunkTheme.colors.surface0};
   border-radius: 1rem;
   padding: 1.5rem;
   cursor: pointer;
   text-decoration: none;
-  color: ${catppuccinTheme.colors.text};
+  color: ${cyberpunkTheme.colors.text};
 `;
 
 export const ProjectsPage: React.FC = () => {
@@ -57,10 +58,10 @@ export const ProjectsPage: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <motion.h3 style={{ color: catppuccinTheme.colors.mauve }}>
+                <motion.h3 style={{ color: cyberpunkTheme.colors.mauve }}>
                   {repo.name}
                 </motion.h3>
-                <motion.p style={{ color: catppuccinTheme.colors.subtext0 }}>
+                <motion.p style={{ color: cyberpunkTheme.colors.subtext0 }}>
                   {repo.description || 'No description available'}
                 </motion.p>
                 <motion.div
@@ -75,7 +76,7 @@ export const ProjectsPage: React.FC = () => {
                     <motion.span
                       key={topic}
                       style={{
-                        background: catppuccinTheme.colors.surface1,
+                        background: cyberpunkTheme.colors.surface1,
                         padding: '0.25rem 0.5rem',
                         borderRadius: '0.5rem',
                         fontSize: '0.8rem',
