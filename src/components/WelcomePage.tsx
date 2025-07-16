@@ -1,27 +1,23 @@
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import styled from '@emotion/styled';
 import { catppuccinTheme } from '../styles/theme';
 
-const WelcomeContainer = styled(motion.div)`
+const HeroContainer = styled(motion.div)`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${catppuccinTheme.colors.base};
-  color: ${catppuccinTheme.colors.text};
-  padding: 2rem;
+  position: relative;
   overflow: hidden;
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(
-    45deg,
-    ${catppuccinTheme.colors.mauve},
-    ${catppuccinTheme.colors.pink}
-  );
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(45deg, #CBA6F7, #F5C2E7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -58,8 +54,25 @@ const itemVariants = {
 };
 
 export const WelcomePage = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.skill-item', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <WelcomeContainer
+    <HeroContainer
+      ref={containerRef}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -92,7 +105,7 @@ export const WelcomePage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        DevOps Engineer
+        Sanket Bhalke
       </Title>
       <SubTitle
         initial={{ opacity: 0 }}
@@ -121,7 +134,7 @@ export const WelcomePage = () => {
           View Projects
         </motion.button>
       </motion.div>
-    </WelcomeContainer>
+    </HeroContainer>
   );
 };
 

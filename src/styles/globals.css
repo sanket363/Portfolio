@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #1E1E2E;
+  color: #CDD6F4;
+}
+
+.glass-effect {
+  background: rgba(30, 30, 46, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(205, 214, 244, 0.1);
+}
+
+/* Add smooth scrolling */
+.lenis {
+  height: 100vh;
+  width: 100%;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: smooth;
+}
