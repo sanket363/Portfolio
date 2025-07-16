@@ -1,5 +1,6 @@
 import '@emotion/react';
 
+// Declare module augmentation for emotion theme
 declare module '@emotion/react' {
   export interface Theme {
     colors: {
@@ -49,7 +50,6 @@ export const cyberpunkTheme = {
     hover: '0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3)'
   }
 };
-    text: '#CDD6F4',
     subtext1: '#BAC2DE',
     subtext0: '#A6ADC8',
     overlay2: '#9399B2',
