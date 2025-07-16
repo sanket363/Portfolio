@@ -11,7 +11,7 @@ import { MotionProvider } from './contexts/MotionContext';
 import { LoadingProvider } from './contexts/LoadingContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import { AnimationDebugger } from './components/AnimationDebugger';
-import { PresetSelector } from './components/AnimationPresets';
+import { AnimationPresets } from './components/AnimationPresets';
 import { KeyboardNavigationProvider } from './contexts/KeyboardNavigationContext';
 import { useReducedMotion, usePerformanceMode, useGesture } from './hooks/useAnimations';
 
@@ -139,7 +139,7 @@ function App() {
               </AnimateSharedLayout>
             </ThemeProvider>
             {process.env.NODE_ENV === 'development' && <AnimationDebugger />}
-            <PresetSelector />
+            <AnimationPresets />
           </KeyboardNavigationProvider>
         </LoadingProvider>
       </MotionProvider>
