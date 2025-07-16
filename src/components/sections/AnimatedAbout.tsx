@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView, useAnimation, useMotionValue, useSpring } from 'framer-motion';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/all';
 import { Code, Cloud, Shield, GitBranch, Server, HardHat, ChevronDown, Award, Target, Zap } from 'lucide-react';
 
 // Register GSAP plugins

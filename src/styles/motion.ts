@@ -1,6 +1,6 @@
 import { Variants, Transition, PanInfo } from 'framer-motion';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/all';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
