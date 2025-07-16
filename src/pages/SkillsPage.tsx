@@ -1,0 +1,60 @@
+import { motion } from 'framer-motion';
+import styled from '@emotion/styled';
+import { catppuccinTheme } from '../styles/theme';
+
+const SkillsContainer = styled(motion.div)`
+  padding: 100px 2rem;
+  background: ${catppuccinTheme.colors.base};
+  min-height: 100vh;
+`;
+
+const SkillGroup = styled(motion.div)`
+  margin-bottom: 2rem;
+`;
+
+const skills = {
+  "Cloud & Infrastructure": ["AWS", "Docker", "Kubernetes", "Terraform"],
+  "CI/CD & Automation": ["Jenkins", "GitLab CI", "Ansible", "Shell Scripting"],
+  "Monitoring & Logging": ["Grafana", "Prometheus", "ELK Stack"],
+  "Programming": ["Python", "JavaScript/TypeScript", "Bash"],
+  "Version Control": ["Git", "GitHub", "GitLab"]
+};
+
+export const SkillsPage = () => {
+  return (
+    <SkillsContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {Object.entries(skills).map(([category, skillList], index) => (
+        <SkillGroup
+          key={category}
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: index * 0.2 }}
+        >
+          <h2 style={{ color: catppuccinTheme.colors.mauve, marginBottom: '1rem' }}>
+            {category}
+          </h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+            {skillList.map((skill) => (
+              <motion.div
+                key={skill}
+                whileHover={{ scale: 1.1 }}
+                style={{
+                  background: catppuccinTheme.colors.surface0,
+                  padding: '0.5rem 1rem',
+                  borderRadius: '1rem',
+                  color: catppuccinTheme.colors.text
+                }}
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </SkillGroup>
+      ))}
+    </SkillsContainer>
+  );
+};

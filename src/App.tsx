@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@emotion/styled';
 import anime from 'animejs';
 
-import DevOpsPortfolio from './pages/DevOpsPortfolioPage';
-import { catppuccinTheme } from './styles/theme';
-import { Navigation } from './components/Navigation';
 import { WelcomePage } from './components/WelcomePage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { SkillsPage } from './pages/SkillsPage';
+import { ContactPage } from './pages/ContactPage';
+import { Navigation } from './components/Navigation';
 import { PageTransition } from './components/PageTransition';
-import ProjectsPage from './pages/ProjectsPage';
-import SkillsPage from './pages/SkillsPage';
-import ContactPage from './pages/ContactPage';
+import { catppuccinTheme } from './styles/theme';
 
 function App() {
   useEffect(() => {
