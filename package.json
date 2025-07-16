@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "npx update-browserslist-db@latest",
+    "build": "npm run prebuild && vite build",
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
