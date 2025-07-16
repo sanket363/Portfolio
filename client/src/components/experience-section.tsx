@@ -15,6 +15,7 @@ const experiences = [
       "Refactored multiple Python Lambda functions to version 3.13.1, improving runtime efficiency and reducing cold start latency by 25% in production.",
       "Assisted with the Lighthouse upgrade in commercial environments and validated golden image packages across environments, improving patch compliance and VM provisioning time.",
       "Led secure IAM user and role lifecycle management across AWS, including credential rotation, policy enforcement, and cleanup of cross-team access groups, ensuring 100% compliance with internal security and audit standards."
+    ]
   }
   {
     title: "DevOps Engineer",
