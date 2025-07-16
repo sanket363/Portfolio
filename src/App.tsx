@@ -5,7 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 import anime from 'animejs';
 import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import { MotionProvider } from './contexts/MotionContext';
 import { LoadingProvider } from './contexts/LoadingContext';

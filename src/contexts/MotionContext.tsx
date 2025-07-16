@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef, ReactNode } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // Types and Interfaces
 interface DeviceCapabilities {
