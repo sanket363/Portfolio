@@ -39,7 +39,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.1",
     "@types/animejs": "^3.1.11",
-    "@types/lottie-web": "^5.12.2",
+    "@types/lottie-web": "^5.12.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.3.1",
