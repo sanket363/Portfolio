@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styled from '@emotion/styled';
-import { catppuccinTheme } from '../styles/theme';
+import { cyberpunkTheme } from '../styles/theme';
 
 const HeroContainer = styled(motion.div)`
   min-height: 100vh;
@@ -12,6 +12,8 @@ const HeroContainer = styled(motion.div)`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  background: ${cyberpunkTheme.colors.background};
+  color: ${cyberpunkTheme.colors.textPrimary};
 `;
 
 const Title = styled(motion.h1)`
@@ -24,7 +26,7 @@ const Title = styled(motion.h1)`
 
 const SubTitle = styled(motion.p)`
   font-size: 1.5rem;
-  color: ${catppuccinTheme.colors.subtext0};
+  color: ${cyberpunkTheme.colors.subtext0};
   margin-bottom: 2rem;
 `;
 
@@ -123,11 +125,11 @@ export const WelcomePage = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           style={{
-            background: catppuccinTheme.colors.mauve,
+            background: cyberpunkTheme.colors.mauve,
             border: 'none',
             padding: '1rem 2rem',
             borderRadius: '2rem',
-            color: catppuccinTheme.colors.base,
+            color: cyberpunkTheme.colors.base,
             cursor: 'pointer',
           }}
         >
