@@ -1,25 +1,27 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Fira_Code } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fira-code',
+});
 
 export const metadata: Metadata = {
-  title: 'DevOps Portfolio',
-  description: 'Showcasing my DevOps skills and projects',
+  title: 'Sanket Bhalke | DevOps Engineer',
+  description: 'Personal portfolio of Sanket Bhalke, a DevOps Engineer showcasing skills and projects.',
 };
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
+}: { 
+  children: React.ReactNode 
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main className="min-h-screen bg-gray-900 text-white">
-          {children}
-        </main>
+    <html lang="en" className={`${firaCode.variable}`}>
+      <body className="font-mono">
+        {children}
       </body>
     </html>
   );

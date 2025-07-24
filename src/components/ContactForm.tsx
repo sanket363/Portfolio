@@ -1,28 +1,69 @@
-"use client";
-import React from "react";
+'use client';
+
+import { useForm, SubmitHandler } from 'react-hook-form';
+import SectionWrapper from './SectionWrapper';
+import Button from './Button';
+
+interface IFormInput {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const ContactForm = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = data => {
+    // This is a dummy handler. In a real application, you would send this to a backend service or Netlify/Vercel forms.
+    alert(`Form submitted!\nName: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`);
+  };
+
+  const inputClasses = "w-full p-3 bg-ctp-surface0 border-2 border-ctp-surface1 rounded-lg focus:outline-none focus:ring-2 focus:ring-ctp-mauve focus:border-transparent transition-colors";
+  const errorClasses = "text-ctp-red mt-1 text-sm";
+
   return (
-    <section className="py-16 bg-gray-950 text-white">
-      <div className="container mx-auto px-6 max-w-lg">
-        <h2 className="text-3xl font-bold mb-6 font-mono text-blue-400">Contact Me</h2>
-        <form className="space-y-5">
+    <SectionWrapper id="contact" title="Get In Touch">
+      <div className="max-w-2xl mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block text-gray-300 mb-1">Name</label>
-            <input className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:border-blue-500 outline-none" type="text" placeholder="Your Name" required />
+            <label htmlFor="name" className="block text-ctp-subtext1 mb-2">Name</label>
+            <input
+              id="name"
+              type="text"
+              {...register('name', { required: 'Name is required' })}
+              className={inputClasses}
+            />
+            {errors.name && <p className={errorClasses}>{errors.name.message}</p>}
           </div>
           <div>
-            <label className="block text-gray-300 mb-1">Email</label>
-            <input className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:border-blue-500 outline-none" type="email" placeholder="you@email.com" required />
+            <label htmlFor="email" className="block text-ctp-subtext1 mb-2">Email</label>
+            <input
+              id="email"
+              type="email"
+              {...register('email', { 
+                required: 'Email is required', 
+                pattern: { value: /\S+@\S+\.\S+/, message: 'Entered value does not match email format' }
+              })}
+              className={inputClasses}
+            />
+            {errors.email && <p className={errorClasses}>{errors.email.message}</p>}
           </div>
           <div>
-            <label className="block text-gray-300 mb-1">Message</label>
-            <textarea className="w-full px-4 py-2 rounded bg-gray-900 border border-gray-700 focus:border-blue-500 outline-none" rows={5} placeholder="How can I help you?" required></textarea>
+            <label htmlFor="message" className="block text-ctp-subtext1 mb-2">Message</label>
+            <textarea
+              id="message"
+              rows={5}
+              {...register('message', { required: 'Message is required' })}
+              className={inputClasses}
+            />
+            {errors.message && <p className={errorClasses}>{errors.message.message}</p>}
           </div>
-          <button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-500 rounded text-white font-semibold transition">Send</button>
+          <div className="text-center">
+            <Button type="submit">Send Message</Button>
+          </div>
         </form>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 
