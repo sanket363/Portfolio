@@ -149,7 +149,7 @@ const SkillsSection = () => {
               className="bg-gray-900 border border-green-400/20 rounded-xl p-8 shadow-lg"
             >
               <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2 text-green-300">
-                <CheckCircle className="w-5 h-5 text-green-400" />{" "}
+                <FaCheckCircle className="w-5 h-5 text-green-400" />{" "}
                 {category.name}
               </h3>
               <ul className="space-y-3">
