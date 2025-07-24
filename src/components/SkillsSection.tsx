@@ -18,7 +18,6 @@ import {
   SiLinkedin,
   SiDocker,
   SiAmazon as SiAws,
-  SiMicrosoftazure as SiAzure,
   SiGooglecloud,
   SiKubernetes,
   SiHelm,
@@ -34,6 +33,7 @@ import {
   SiSplunk,
   SiCloudflare,
 } from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
 
 const skills = [
   {
@@ -46,7 +46,7 @@ const skills = [
       },
       {
         label: "Azure",
-        icon: <SiAzure className="w-6 h-6 text-blue-400" />,
+        icon: <VscAzure className="w-6 h-6 text-blue-400" />,
         link: "https://azure.microsoft.com/",
       },
       {
