@@ -2,10 +2,6 @@
   "name": "devops-portfolio",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": ">=20.17.1 <21.0.0",
-    "npm": ">=10.0.0 <11.0.0"
-  },
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "export NODE_OPTIONS=--max-old-space-size=4096 && next build --debug",
@@ -24,7 +20,7 @@
     "js-yaml": "latest",
     "locomotive-scroll": "latest",
     "lucide-react": "latest",
-    "next": "14.3.1",
+    "next": "latest",
     "next-themes": "latest",
     "react": "latest",
     "react-chartjs-2": "latest",
