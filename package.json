@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "react-icons": "^4.12.0",
     "framer-motion": "^10.0.0",
     "next": "14.0.0",
     "react": "18.2.0",

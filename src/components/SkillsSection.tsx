@@ -1,26 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Github,
-  Linkedin,
-  Docker,
-  Cloud,
-  Cpu,
-  Terminal,
-  Database,
-  Server,
-  Settings,
-  Shield,
-  Network,
-  Code,
-  Zap,
-  ExternalLink,
-  GitBranch,
-  Play,
-  CheckCircle,
-  AlertTriangle
-} from "lucide-react";
+import { SiGithub, SiLinkedin, SiDocker, SiAmazonaws, SiMicrosoftazure, SiGooglecloud, SiKubernetes, SiHelm, SiTerraform, SiAmazoncloudformation, SiAnsible, SiJenkins, SiGitlab, SiPrometheus, SiGrafana, SiDatadog, SiElasticsearch, SiKibana, SiSplunk, SiCloudflare } from "react-icons/si";
+import { FaCloud, FaServer, FaTerminal, FaCode, FaGitAlt, FaPlay, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 
 const skills = [
   {
