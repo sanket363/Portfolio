@@ -1,42 +1,40 @@
-# Use the official Node.js 18 image as a base image
-FROM node:18-alpine AS base
+# Stage 1: Build the application
+FROM node:18-alpine AS builder
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
-FROM base AS deps
 RUN npm ci
 
-# Copy the rest of the application
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
+# Copy source code
 COPY . .
 
 # Build the application
 RUN npm run build
 
-# Production image
+# Stage 2: Production image
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-# Copy built assets from the builder stage
+# Copy built assets from builder
+COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/next.config.js ./
 
 # Install production dependencies only
-RUN npm install next
+RUN npm install next@14.2.3 --production
 
-# Expose the port the app runs on
+# Expose port
 EXPOSE 3000
 
-# Set the environment to production
-ENV NODE_ENV production
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
 
 # Start the application
 CMD ["npm", "start"]
