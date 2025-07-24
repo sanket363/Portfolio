@@ -6,4 +6,44 @@
   body {
     @apply bg-ctp-base text-ctp-text;
   }
+
+  /* React JSON View Lite Customization */
+  .dark .w-rjv {
+    @apply bg-gray-900;
+  }
+  
+  .w-rjv {
+    @apply bg-white rounded-lg p-4 text-sm;
+  }
+  
+  .w-rjv-object,
+  .w-rjv-array {
+    @apply ml-4;
+  }
+  
+  .w-rjv-key {
+    @apply text-ctp-blue;
+  }
+  
+  .w-rjv-string {
+    @apply text-ctp-green;
+  }
+  
+  .w-rjv-number {
+    @apply text-ctp-peach;
+  }
+  
+  .w-rjv-boolean {
+    @apply text-ctp-mauve;
+  }
+  
+  .w-rjv-null,
+  .w-rjv-undefined {
+    @apply text-ctp-sapphire;
+  }
+  
+  .w-rjv-type-object,
+  .w-rjv-type-array {
+    @apply text-ctp-yellow;
+  }
 }

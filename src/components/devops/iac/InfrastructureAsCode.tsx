@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Cpu, Database, Network, RefreshCw } from 'lucide-react';
-import ReactJson from 'react-json-view';
+import { JsonView, allExpanded, defaultStyles } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 
 const INFRA_ITEMS = [
   {
@@ -92,9 +93,13 @@ const InfrastructureAsCode: React.FC = () => {
             </div>
             
             <div className="bg-gray-900 rounded-lg p-4 h-[400px] overflow-auto">
-              <pre className="text-green-400 text-sm">
-                {JSON.stringify(selectedItem?.config, null, 2)}
-              </pre>
+              <div className="json-view-container" style={{ maxHeight: '300px', overflow: 'auto' }}>
+                <JsonView 
+                  data={selectedItem?.config} 
+                  shouldExpandNode={allExpanded} 
+                  style={defaultStyles}
+                />
+              </div>
             </div>
           </div>
         </div>
