@@ -34,7 +34,7 @@ const skills = [
   {
     name: "Containers & Orchestration",
     items: [
-      { label: "Docker", icon: <Docker className="w-6 h-6 text-blue-300" />, link: "https://www.docker.com/" },
+      { label: "Docker", icon: <Server className="w-6 h-6 text-blue-300" />, link: "https://www.docker.com/" },
       { label: "Kubernetes", icon: <Server className="w-6 h-6 text-blue-500" />, link: "https://kubernetes.io/" },
       { label: "Helm", icon: <Settings className="w-6 h-6 text-indigo-400" />, link: "https://helm.sh/" }
     ]
