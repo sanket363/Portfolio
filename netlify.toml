@@ -4,9 +4,10 @@
   node_bundler = "esbuild"
 
 [build.environment]
-  NODE_VERSION = "20"  # Using LTS for better stability
+  NODE_VERSION = "20.17.1"  # Using LTS for better stability
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
+  NPM_VERSION = "10"  # Explicitly set NPM version compatible with Node 20
 
 [dev]
   command = "npm run dev"
