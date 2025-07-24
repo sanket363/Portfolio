@@ -1,97 +1,181 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FaCloud, 
-  FaServer, 
-  FaTerminal, 
-  FaCode, 
-  FaGitAlt, 
-  FaPlay, 
-  FaCheckCircle, 
-  FaExclamationTriangle, 
-  FaAws, 
-  FaExternalLinkAlt 
+import {
+  FaCloud,
+  FaServer,
+  FaTerminal,
+  FaCode,
+  FaGitAlt,
+  FaPlay,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaAws,
+  FaExternalLinkAlt,
 } from "react-icons/fa";
-import { 
-  SiGithub, 
-  SiLinkedin, 
-  SiDocker, 
-  SiAmazonaws as SiAws, 
-  SiMicrosoftazure as SiAzure, 
-  SiGooglecloud, 
-  SiKubernetes, 
-  SiHelm, 
-  SiTerraform, 
-  SiAnsible, 
-  SiJenkins, 
-  SiGitlab, 
-  SiPrometheus, 
-  SiGrafana, 
-  SiDatadog, 
-  SiElasticsearch, 
-  SiKibana, 
-  SiSplunk, 
-  SiCloudflare 
+import {
+  SiGithub,
+  SiLinkedin,
+  SiDocker,
+  SiAmazon as SiAws,
+  SiMicrosoftazure as SiAzure,
+  SiGooglecloud,
+  SiKubernetes,
+  SiHelm,
+  SiTerraform,
+  SiAnsible,
+  SiJenkins,
+  SiGitlab,
+  SiPrometheus,
+  SiGrafana,
+  SiDatadog,
+  SiElasticsearch,
+  SiKibana,
+  SiSplunk,
+  SiCloudflare,
 } from "react-icons/si";
 
 const skills = [
   {
     name: "Cloud Platforms",
     items: [
-      { label: "AWS", icon: <SiAws className="w-6 h-6 text-yellow-400" />, link: "https://aws.amazon.com/" },
-      { label: "Azure", icon: <SiAzure className="w-6 h-6 text-blue-400" />, link: "https://azure.microsoft.com/" },
-      { label: "GCP", icon: <SiGooglecloud className="w-6 h-6 text-red-400" />, link: "https://cloud.google.com/" }
-    ]
+      {
+        label: "AWS",
+        icon: <SiAws className="w-6 h-6 text-yellow-400" />,
+        link: "https://aws.amazon.com/",
+      },
+      {
+        label: "Azure",
+        icon: <SiAzure className="w-6 h-6 text-blue-400" />,
+        link: "https://azure.microsoft.com/",
+      },
+      {
+        label: "GCP",
+        icon: <SiGooglecloud className="w-6 h-6 text-red-400" />,
+        link: "https://cloud.google.com/",
+      },
+    ],
   },
   {
     name: "Containers & Orchestration",
     items: [
-      { label: "Docker", icon: <SiDocker className="w-6 h-6 text-blue-300" />, link: "https://www.docker.com/" },
-      { label: "Kubernetes", icon: <SiKubernetes className="w-6 h-6 text-blue-500" />, link: "https://kubernetes.io/" },
-      { label: "Helm", icon: <SiHelm className="w-6 h-6 text-indigo-400" />, link: "https://helm.sh/" }
-    ]
+      {
+        label: "Docker",
+        icon: <SiDocker className="w-6 h-6 text-blue-300" />,
+        link: "https://www.docker.com/",
+      },
+      {
+        label: "Kubernetes",
+        icon: <SiKubernetes className="w-6 h-6 text-blue-500" />,
+        link: "https://kubernetes.io/",
+      },
+      {
+        label: "Helm",
+        icon: <SiHelm className="w-6 h-6 text-indigo-400" />,
+        link: "https://helm.sh/",
+      },
+    ],
   },
   {
     name: "Infrastructure as Code",
     items: [
-      { label: "Terraform", icon: <SiTerraform className="w-6 h-6 text-purple-400" />, link: "https://www.terraform.io/" },
-      { label: "CloudFormation", icon: <FaAws className="w-6 h-6 text-orange-400" />, link: "https://aws.amazon.com/cloudformation/" },
-      { label: "Ansible", icon: <SiAnsible className="w-6 h-6 text-red-400" />, link: "https://www.ansible.com/" }
-    ]
+      {
+        label: "Terraform",
+        icon: <SiTerraform className="w-6 h-6 text-purple-400" />,
+        link: "https://www.terraform.io/",
+      },
+      {
+        label: "CloudFormation",
+        icon: <FaAws className="w-6 h-6 text-orange-400" />,
+        link: "https://aws.amazon.com/cloudformation/",
+      },
+      {
+        label: "Ansible",
+        icon: <SiAnsible className="w-6 h-6 text-red-400" />,
+        link: "https://www.ansible.com/",
+      },
+    ],
   },
   {
     name: "CI/CD & Automation",
     items: [
-      { label: "GitHub Actions", icon: <SiGithub className="w-6 h-6 text-gray-200" />, link: "https://github.com/features/actions" },
-      { label: "Jenkins", icon: <SiJenkins className="w-6 h-6 text-red-500" />, link: "https://www.jenkins.io/" },
-      { label: "GitLab CI", icon: <SiGitlab className="w-6 h-6 text-pink-400" />, link: "https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/" }
-    ]
+      {
+        label: "GitHub Actions",
+        icon: <SiGithub className="w-6 h-6 text-gray-200" />,
+        link: "https://github.com/features/actions",
+      },
+      {
+        label: "Jenkins",
+        icon: <SiJenkins className="w-6 h-6 text-red-500" />,
+        link: "https://www.jenkins.io/",
+      },
+      {
+        label: "GitLab CI",
+        icon: <SiGitlab className="w-6 h-6 text-pink-400" />,
+        link: "https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/",
+      },
+    ],
   },
   {
     name: "Monitoring & Logging",
     items: [
-      { label: "Prometheus", icon: <SiPrometheus className="w-6 h-6 text-red-400" />, link: "https://prometheus.io/" },
-      { label: "Grafana", icon: <SiGrafana className="w-6 h-6 text-orange-400" />, link: "https://grafana.com/" },
-      { label: "Datadog", icon: <SiDatadog className="w-6 h-6 text-purple-400" />, link: "https://www.datadoghq.com/" }
-    ]
+      {
+        label: "Prometheus",
+        icon: <SiPrometheus className="w-6 h-6 text-red-400" />,
+        link: "https://prometheus.io/",
+      },
+      {
+        label: "Grafana",
+        icon: <SiGrafana className="w-6 h-6 text-orange-400" />,
+        link: "https://grafana.com/",
+      },
+      {
+        label: "Datadog",
+        icon: <SiDatadog className="w-6 h-6 text-purple-400" />,
+        link: "https://www.datadoghq.com/",
+      },
+    ],
   },
   {
     name: "Scripting & Languages",
     items: [
-      { label: "Bash", icon: <FaTerminal className="w-6 h-6 text-gray-400" />, link: "https://www.gnu.org/software/bash/" },
-      { label: "Python", icon: <FaCode className="w-6 h-6 text-yellow-400" />, link: "https://www.python.org/" },
-      { label: "Go", icon: <FaTerminal className="w-6 h-6 text-blue-400" />, link: "https://golang.org/" }
-    ]
+      {
+        label: "Bash",
+        icon: <FaTerminal className="w-6 h-6 text-gray-400" />,
+        link: "https://www.gnu.org/software/bash/",
+      },
+      {
+        label: "Python",
+        icon: <FaCode className="w-6 h-6 text-yellow-400" />,
+        link: "https://www.python.org/",
+      },
+      {
+        label: "Go",
+        icon: <FaTerminal className="w-6 h-6 text-blue-400" />,
+        link: "https://golang.org/",
+      },
+    ],
   },
   {
     name: "Version Control",
     items: [
-      { label: "Git", icon: <FaGitAlt className="w-6 h-6 text-gray-200" />, link: "https://git-scm.com/" },
-      { label: "GitHub", icon: <SiGithub className="w-6 h-6 text-gray-200" />, link: "https://github.com/" },
-      { label: "GitLab", icon: <SiGitlab className="w-6 h-6 text-orange-400" />, link: "https://gitlab.com/" }
-    ]
-  }
+      {
+        label: "Git",
+        icon: <FaGitAlt className="w-6 h-6 text-gray-200" />,
+        link: "https://git-scm.com/",
+      },
+      {
+        label: "GitHub",
+        icon: <SiGithub className="w-6 h-6 text-gray-200" />,
+        link: "https://github.com/",
+      },
+      {
+        label: "GitLab",
+        icon: <SiGitlab className="w-6 h-6 text-orange-400" />,
+        link: "https://gitlab.com/",
+      },
+    ],
+  },
 ];
 
 const links = [
