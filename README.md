@@ -1,4 +1,4 @@
-# DevOps Portfolio
+# DevOps Portfolio Website
 
 A modern, interactive portfolio showcasing DevOps expertise with real-time monitoring, CI/CD visualizations, and infrastructure as code examples. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
@@ -23,12 +23,14 @@ A modern, interactive portfolio showcasing DevOps expertise with real-time monit
 ### Local Development
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/sanket363/Portfolio.git
    cd Portfolio
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    # or
@@ -36,12 +38,14 @@ A modern, interactive portfolio showcasing DevOps expertise with real-time monit
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.example .env.local
    # Update the .env.local file with your configuration
    ```
 
 4. Start the development server:
+
    ```bash
    npm run dev
    # or
@@ -89,6 +93,7 @@ src/
 ### Docker
 
 1. Build the Docker image:
+
    ```bash
    docker build -t portfolio .
    ```
@@ -101,6 +106,7 @@ src/
 ### Static Export
 
 1. Build the static files:
+
    ```bash
    npm run build
    npm run export
