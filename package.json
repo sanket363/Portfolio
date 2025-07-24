@@ -10,9 +10,6 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@radix-ui/react-slot": "^1.0.2",
-    "@types/d3": "^7.4.3",
-    "@types/js-yaml": "^4.0.9",
-    "@types/react-syntax-highlighter": "^15.5.11",
     "@visx/visx": "^3.8.0",
     "chart.js": "^4.4.1",
     "class-variance-authority": "^0.7.0",
@@ -47,9 +44,11 @@
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.18",
+    "@types/react-hook-form": "^7.34.2",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@types/three": "^0.161.1",
     "autoprefixer": "^10.4.16",
@@ -57,8 +56,7 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.1",
     "@tailwindcss/nesting": "^0.4.1",
-    "typescript": "^5.3.3",
-    "@types/react-hook-form": "^7.34.2"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.0.0",
