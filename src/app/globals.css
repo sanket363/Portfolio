@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-frappe-bg text-frappe-text font-mono overflow-x-hidden;
+}
+
+.cursor-blink {
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { to { visibility: hidden; } }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
