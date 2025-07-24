@@ -17,8 +17,8 @@ import {
   SiGithub, 
   SiLinkedin, 
   SiDocker, 
-  SiAmazonaws, 
-  SiMicrosoftazure, 
+  SiAmazonaws as SiAws, 
+  SiMicrosoftazure as SiAzure, 
   SiGooglecloud, 
   SiKubernetes, 
   SiHelm, 
@@ -39,8 +39,8 @@ const skills = [
   {
     name: "Cloud Platforms",
     items: [
-      { label: "AWS", icon: <SiAmazonaws className="w-6 h-6 text-yellow-400" />, link: "https://aws.amazon.com/" },
-      { label: "Azure", icon: <SiMicrosoftazure className="w-6 h-6 text-blue-400" />, link: "https://azure.microsoft.com/" },
+      { label: "AWS", icon: <SiAws className="w-6 h-6 text-yellow-400" />, link: "https://aws.amazon.com/" },
+      { label: "Azure", icon: <SiAzure className="w-6 h-6 text-blue-400" />, link: "https://azure.microsoft.com/" },
       { label: "GCP", icon: <SiGooglecloud className="w-6 h-6 text-red-400" />, link: "https://cloud.google.com/" }
     ]
   },
