@@ -38,6 +38,8 @@
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.1",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "tailwindcss-nesting": "^0.0.0-insiders.565cd3e",
     "typescript": "^5.3.3"
   },
   "engines": {
