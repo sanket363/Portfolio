@@ -1,63 +1,109 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { SiGithub, SiLinkedin, SiDocker, SiAmazonaws, SiMicrosoftazure, SiGooglecloud, SiKubernetes, SiHelm, SiTerraform, SiAmazoncloudformation, SiAnsible, SiJenkins, SiGitlab, SiPrometheus, SiGrafana, SiDatadog, SiElasticsearch, SiKibana, SiSplunk, SiCloudflare } from "react-icons/si";
-import { FaCloud, FaServer, FaTerminal, FaCode, FaGitAlt, FaPlay, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+import { 
+  FaCloud, 
+  FaServer, 
+  FaTerminal, 
+  FaCode, 
+  FaGitAlt, 
+  FaPlay, 
+  FaCheckCircle, 
+  FaExclamationTriangle, 
+  FaAws 
+} from "react-icons/fa";
+import { 
+  SiGithub, 
+  SiLinkedin, 
+  SiDocker, 
+  SiAmazonaws, 
+  SiMicrosoftazure, 
+  SiGooglecloud, 
+  SiKubernetes, 
+  SiHelm, 
+  SiTerraform, 
+  SiAnsible, 
+  SiJenkins, 
+  SiGitlab, 
+  SiPrometheus, 
+  SiGrafana, 
+  SiDatadog, 
+  SiElasticsearch, 
+  SiKibana, 
+  SiSplunk, 
+  SiCloudflare 
+} from "react-icons/si";
 
 const skills = [
   {
     name: "Cloud Platforms",
     items: [
-      { label: "AWS", icon: <Cloud className="w-6 h-6 text-yellow-400" />, link: "https://aws.amazon.com/" },
-      { label: "Azure", icon: <Cloud className="w-6 h-6 text-blue-400" />, link: "https://azure.microsoft.com/" },
-      { label: "GCP", icon: <Cloud className="w-6 h-6 text-red-400" />, link: "https://cloud.google.com/" }
+      { label: "AWS", icon: <SiAmazonaws className="w-6 h-6 text-yellow-400" />, link: "https://aws.amazon.com/" },
+      { label: "Azure", icon: <SiMicrosoftazure className="w-6 h-6 text-blue-400" />, link: "https://azure.microsoft.com/" },
+      { label: "GCP", icon: <SiGooglecloud className="w-6 h-6 text-red-400" />, link: "https://cloud.google.com/" }
     ]
   },
   {
     name: "Containers & Orchestration",
     items: [
-      { label: "Docker", icon: <Server className="w-6 h-6 text-blue-300" />, link: "https://www.docker.com/" },
-      { label: "Kubernetes", icon: <Server className="w-6 h-6 text-blue-500" />, link: "https://kubernetes.io/" },
-      { label: "Helm", icon: <Settings className="w-6 h-6 text-indigo-400" />, link: "https://helm.sh/" }
+      { label: "Docker", icon: <SiDocker className="w-6 h-6 text-blue-300" />, link: "https://www.docker.com/" },
+      { label: "Kubernetes", icon: <SiKubernetes className="w-6 h-6 text-blue-500" />, link: "https://kubernetes.io/" },
+      { label: "Helm", icon: <SiHelm className="w-6 h-6 text-indigo-400" />, link: "https://helm.sh/" }
     ]
   },
   {
     name: "Infrastructure as Code",
     items: [
-      { label: "Terraform", icon: <Code className="w-6 h-6 text-purple-400" />, link: "https://www.terraform.io/" },
-      { label: "CloudFormation", icon: <Code className="w-6 h-6 text-orange-400" />, link: "https://aws.amazon.com/cloudformation/" },
-      { label: "Ansible", icon: <Terminal className="w-6 h-6 text-red-400" />, link: "https://www.ansible.com/" }
+      { label: "Terraform", icon: <SiTerraform className="w-6 h-6 text-purple-400" />, link: "https://www.terraform.io/" },
+      { label: "CloudFormation", icon: <FaAws className="w-6 h-6 text-orange-400" />, link: "https://aws.amazon.com/cloudformation/" },
+      { label: "Ansible", icon: <SiAnsible className="w-6 h-6 text-red-400" />, link: "https://www.ansible.com/" }
     ]
   },
   {
     name: "CI/CD & Automation",
     items: [
-      { label: "GitHub Actions", icon: <Github className="w-6 h-6 text-gray-200" />, link: "https://github.com/features/actions" },
-      { label: "Jenkins", icon: <Server className="w-6 h-6 text-red-500" />, link: "https://www.jenkins.io/" },
-      { label: "GitLab CI", icon: <GitBranch className="w-6 h-6 text-pink-400" />, link: "https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/" }
+      { label: "GitHub Actions", icon: <SiGithub className="w-6 h-6 text-gray-200" />, link: "https://github.com/features/actions" },
+      { label: "Jenkins", icon: <SiJenkins className="w-6 h-6 text-red-500" />, link: "https://www.jenkins.io/" },
+      { label: "GitLab CI", icon: <SiGitlab className="w-6 h-6 text-pink-400" />, link: "https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/" }
     ]
   },
   {
     name: "Monitoring & Logging",
     items: [
-      { label: "Prometheus", icon: <Zap className="w-6 h-6 text-orange-400" />, link: "https://prometheus.io/" },
-      { label: "Grafana", icon: <Cpu className="w-6 h-6 text-yellow-300" />, link: "https://grafana.com/" },
-      { label: "ELK Stack", icon: <Database className="w-6 h-6 text-green-400" />, link: "https://www.elastic.co/what-is/elk-stack" }
+      { label: "Prometheus", icon: <SiPrometheus className="w-6 h-6 text-red-400" />, link: "https://prometheus.io/" },
+      { label: "Grafana", icon: <SiGrafana className="w-6 h-6 text-orange-400" />, link: "https://grafana.com/" },
+      { label: "Datadog", icon: <SiDatadog className="w-6 h-6 text-purple-400" />, link: "https://www.datadoghq.com/" }
     ]
   },
   {
-    name: "Scripting & Automation",
+    name: "Scripting & Languages",
     items: [
-      { label: "Bash", icon: <Terminal className="w-6 h-6 text-gray-400" />, link: "https://www.gnu.org/software/bash/" },
-      { label: "Python", icon: <Code className="w-6 h-6 text-yellow-400" />, link: "https://www.python.org/" },
-      { label: "PowerShell", icon: <Terminal className="w-6 h-6 text-blue-400" />, link: "https://docs.microsoft.com/en-us/powershell/" }
+      { label: "Bash", icon: <FaTerminal className="w-6 h-6 text-gray-400" />, link: "https://www.gnu.org/software/bash/" },
+      { label: "Python", icon: <FaCode className="w-6 h-6 text-yellow-400" />, link: "https://www.python.org/" },
+      { label: "Go", icon: <FaTerminal className="w-6 h-6 text-blue-400" />, link: "https://golang.org/" }
+    ]
+  },
+  {
+    name: "Version Control",
+    items: [
+      { label: "Git", icon: <FaGitAlt className="w-6 h-6 text-gray-200" />, link: "https://git-scm.com/" },
+      { label: "GitHub", icon: <SiGithub className="w-6 h-6 text-gray-200" />, link: "https://github.com/" },
+      { label: "GitLab", icon: <SiGitlab className="w-6 h-6 text-orange-400" />, link: "https://gitlab.com/" }
     ]
   }
 ];
 
 const links = [
-  { label: "GitHub", icon: <Github className="w-5 h-5" />, url: "https://github.com/sanket363" },
-  { label: "LinkedIn", icon: <Linkedin className="w-5 h-5 text-blue-400" />, url: "https://www.linkedin.com/in/sanket-bhalke-devops/" }
+  {
+    label: "GitHub",
+    icon: <SiGithub className="w-5 h-5" />,
+    url: "https://github.com/sanket363",
+  },
+  {
+    label: "LinkedIn",
+    icon: <SiLinkedin className="w-5 h-5 text-blue-400" />,
+    url: "https://www.linkedin.com/in/sanket-bhalke-devops/",
+  },
 ];
 
 const SkillsSection = () => {
@@ -102,7 +148,8 @@ const SkillsSection = () => {
               className="bg-gray-900 border border-green-400/20 rounded-xl p-8 shadow-lg"
             >
               <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2 text-green-300">
-                <CheckCircle className="w-5 h-5 text-green-400" /> {category.name}
+                <CheckCircle className="w-5 h-5 text-green-400" />{" "}
+                {category.name}
               </h3>
               <ul className="space-y-3">
                 {category.items.map(({ label, icon, link }) => (
