@@ -10,7 +10,8 @@ import {
   FaPlay, 
   FaCheckCircle, 
   FaExclamationTriangle, 
-  FaAws 
+  FaAws, 
+  FaExternalLinkAlt 
 } from "react-icons/fa";
 import { 
   SiGithub, 
@@ -132,7 +133,7 @@ const SkillsSection = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-800 hover:border-green-400 hover:text-green-400 transition-colors"
               >
                 {icon} {label}
-                <ExternalLink className="w-4 h-4 ml-1" />
+                <FaExternalLinkAlt className="w-3 h-3 ml-1" />
               </a>
             ))}
           </div>
@@ -162,7 +163,7 @@ const SkillsSection = () => {
                     >
                       {icon}
                       <span>{label}</span>
-                      <ExternalLink className="w-4 h-4 ml-1" />
+                      <FaExternalLinkAlt className="w-3 h-3 ml-1" />
                     </a>
                   </li>
                 ))}
