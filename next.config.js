@@ -17,13 +17,6 @@ const nextConfig = {
       },
     ],
   },
-  // Enable SWC minification
-  swcMinify: true,
-  // Enable React 18 concurrent features
-  experimental: {
-    appDir: true,
-    serverActions: true,
-  },
   // Enable source maps in production for better debugging
   productionBrowserSourceMaps: true,
   // Enable webpack 5
