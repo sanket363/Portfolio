@@ -4,7 +4,7 @@
   node_bundler = "esbuild"
 
 [build.environment]
-  NODE_VERSION = "20.17.1"  # Using LTS for better stability
+  NODE_VERSION = "20.11.1"  # Latest LTS version available on Netlify
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
   NPM_VERSION = "10"  # Explicitly set NPM version compatible with Node 20

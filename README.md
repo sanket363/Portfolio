@@ -1,4 +1,4 @@
-# DevOps Portfolio Website
+# DevOps Portfolio Website.
 
 A modern, interactive portfolio showcasing DevOps expertise with real-time monitoring, CI/CD visualizations, and infrastructure as code examples. Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
